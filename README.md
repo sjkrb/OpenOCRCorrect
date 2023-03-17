@@ -65,6 +65,10 @@ The folder “data/Book1Sanskrit” contains:-
 9) Folder “Correct” with correct output of corresponding 20 pages in folder “Inds”.
 10) Folder “Corrected” in which the output corrected by the user would be loaded while using the application.
 
+# New features added
+ 1) ability to bold and unbold text
+ 2) you can use subscript and superscript
+
 # How to use the Framework
 
 1) Select the Language out of Sanskrit, Hindi/Marathi or English from top right. Click on the “Open” icon on top left, or press “Ctrl+O”.
