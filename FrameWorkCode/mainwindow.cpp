@@ -40,7 +40,7 @@ MainWindow::MainWindow(QWidget *parent) :
     str += "डॉ,, ड़,, ढ़,, अ   - a,, आ/ ा   - A,, इ/ ि   - i,, ई/ ी   - I,, उ/ ु   - u,, ऊ/ ू   - U,, ऋ/ ृ   - f,, ॠ/ ॄ   - F,, ऌ/ ॢ   - x,, ॡ/ \"ॣ\”   - X,, ए/ े   - e,, ऐ/ ै   - E,, ओ/ ो   - o,, औ/ ौ   - O,, ं   - M,, ः   - H,, ँ    - ~,, ऽ   - $,, ॐ   - %,, ज्ञ   - jYa ,, ळ ,, त्र   - tra,, श्र   - Sra,, क्ष्/क्ष   - kz/kza,, द्य्/द्य   - dy/dya,, क्/क   - k/ka,, ख्/ख   - K/Ka,, ग्/ग   - g/ga,, घ्/घ   - G/Ga,, ङ्/ङ   - N/Na,, च्/च   - c/ca,, छ्/छ   - C/Ca,, ज्/ज   - j/ja,, झ्/झ   - J/Ja,, ञ्/ञ   - Y/Ya,, ट्/ट   - w/wa,, ठ्/ठ   - W/Wa,, ड्/ड   - q/qa,, ढ्/ढ   - Q/Qa,, ण्/ण   - R/Ra,, त्/त   - t/ta,, थ्/थ   - T/Ta,, द्/द   - d/da,, ध्/ध   - D/Da,, न्/न   - n/na,, प्/प   - p/pa,, फ्/फ   - P/Pa,, ब्/ब   - b/ba,, भ्/भ   - B/Ba,, म्/म   - m/ma,, य्/य   - y/ya,, र्/र   - r/ra,, ल्/ल   - l/la,, व्/व   - v/va,, श्/श   - S/Sa,, ष्/ष   - z/za,, स्/स   - s/sa,, ह्/ह   - h/ha,, ळ्/ळ   - &/&a,, ऩ्  -%,, फ़्  - ^,, य़्  - L,, ऱ्  - V,,१   - 1,, २   - 2,, ३   - 3,, ४   - 4,, ५   - 5,, ६   - 6,, ७   - 7,, ८   - 8,, ९   - 9,, ०   - 0,, ।   - |,, ॥   - ||";
 
     str.replace(",, ", "\n");
-   // str.replace(", ","\t");
+    // str.replace(", ","\t");
     ui->textEdit->setText(str);
 }
 
@@ -110,18 +110,18 @@ QString file = "";
 bool fileFlag = 0;
 void MainWindow::on_actionLoad_Next_Page_triggered()
 {   if(mFilename.size()>0){
-    string localFilename = mFilename.toUtf8().constData();
-    string nos = "0123456789";
-    size_t loc = localFilename.find(".txt");
-    string s = localFilename.substr(loc-1,1);
-    string no;
-    while(nos.find(s) != string::npos) { no = s + no; loc--; s = localFilename.substr(loc-1,1);  }
-    //cout << stoi(no) + 1 << endl;
-    localFilename.replace(loc,no.size(),to_string(stoi(no) + 1));
-    //cout << localFilename << endl;
-    file = QString::fromStdString(localFilename); fileFlag = 1;
-    //OPENSPELLFLAG = 1;
-    on_actionOpen_triggered();
+        string localFilename = mFilename.toUtf8().constData();
+        string nos = "0123456789";
+        size_t loc = localFilename.find(".txt");
+        string s = localFilename.substr(loc-1,1);
+        string no;
+        while(nos.find(s) != string::npos) { no = s + no; loc--; s = localFilename.substr(loc-1,1);  }
+        //cout << stoi(no) + 1 << endl;
+        localFilename.replace(loc,no.size(),to_string(stoi(no) + 1));
+        //cout << localFilename << endl;
+        file = QString::fromStdString(localFilename); fileFlag = 1;
+        //OPENSPELLFLAG = 1;
+        on_actionOpen_triggered();
     }
     //imageOrig.load(localFilename.replace(QString("txt"),QString("jpeg")));
 
@@ -130,19 +130,19 @@ void MainWindow::on_actionLoad_Next_Page_triggered()
 
 void MainWindow::on_actionLoad_Prev_Page_triggered()
 {   if(mFilename.size() >0 ){
-    string localFilename = mFilename.toUtf8().constData();
-    string nos = "0123456789";
-    size_t loc = localFilename.find(".txt");
-    string s = localFilename.substr(loc-1,1);
-    string no;
-    while(nos.find(s) != string::npos) { no = s + no; loc--; s = localFilename.substr(loc-1,1);  }
-    //cout << stoi(no) + 1 << endl;
-    localFilename.replace(loc,no.size(),to_string(stoi(no) - 1));
-    file = QString::fromStdString(localFilename); fileFlag = 1;
-    //OPENSPELLFLAG = 1;
-    prevTRig =1;
-    on_actionOpen_triggered();
-    prevTRig =0;
+        string localFilename = mFilename.toUtf8().constData();
+        string nos = "0123456789";
+        size_t loc = localFilename.find(".txt");
+        string s = localFilename.substr(loc-1,1);
+        string no;
+        while(nos.find(s) != string::npos) { no = s + no; loc--; s = localFilename.substr(loc-1,1);  }
+        //cout << stoi(no) + 1 << endl;
+        localFilename.replace(loc,no.size(),to_string(stoi(no) - 1));
+        file = QString::fromStdString(localFilename); fileFlag = 1;
+        //OPENSPELLFLAG = 1;
+        prevTRig =1;
+        on_actionOpen_triggered();
+        prevTRig =0;
     }
 
     //imageOrig.load(localFilename.replace(QString("txt"),QString("jpeg")));
@@ -202,18 +202,18 @@ void MainWindow::on_actionOpen_triggered()
     if(!fileFlag) {
         file = QFileDialog::getOpenFileName(this,"Open a File");
     }
-       //qDebug() <<"here" << file <<endl;
-        QString localmFilename1;
-        if(!file.isEmpty())
-        { //CPair["BApyopetam"] = "BAzyopetam"; CPairRight["BAzyopetam"]++;
-            QFile sFile(file);
-            if(sFile.open(QFile::ReadOnly | QFile::Text))
-            {
-                mFilename = file;
-                localmFilename1 = mFilename;
+    //qDebug() <<"here" << file <<endl;
+    QString localmFilename1;
+    if(!file.isEmpty())
+    { //CPair["BApyopetam"] = "BAzyopetam"; CPairRight["BAzyopetam"]++;
+        QFile sFile(file);
+        if(sFile.open(QFile::ReadOnly | QFile::Text))
+        {
+            mFilename = file;
+            localmFilename1 = mFilename;
 
-                // load vIPage and vCPage for calculating WER if corresponding CPage exist
-                /*vIPage.clear(); vCPage.clear();
+            // load vIPage and vCPage for calculating WER if corresponding CPage exist
+            /*vIPage.clear(); vCPage.clear();
                 //QString localmFilename1 = mFilename;
                 std::ifstream ssIPage(localmFilename1.toUtf8().constData());
                 string localstr;
@@ -242,61 +242,61 @@ void MainWindow::on_actionOpen_triggered()
                     ui->lineEdit->setText("Page WER = " + QString::number((vIsz-WER)*100/vIsz));
                 }
                 */
-                // load and set data in Browzer
-                // if file exist in corrected open that else open file in Indz
-                myTimer.start();
-                //int nMilliseconds = myTimer.elapsed();
-                // do something..
-                secs = 0;
-                int mins = secs/60;
-                secs = secs - mins*60;
-                ui->lineEdit->setText(QString::number(mins) + "mins " + QString::number(secs) + " secs elapsed on this page(Right Click to update)");
-                QString newFile = mFilename;
-                newFile.replace("Inds","Corrected");
-                QFile sFile1(newFile);
-                if(sFile1.open(QFile::ReadOnly | QFile::Text))
-                {
-                    QTextStream in(&sFile1);
-                    QString text = in.readAll();
-                    sFile.close();
-                    ui->textBrowser->setPlainText(text);
-                } else {
-                    QTextStream in(&sFile);
-                    QString text = in.readAll();
-                    sFile.close();
-                    ui->textBrowser->setPlainText(text);
-                }
-                // load and show image:
-                QString localmFilename = mFilename;
-                localmFilename.replace("txt","jpeg");
-                //system("cd localmFilename");
-                //localmFilename = "gs -dNOPAUSE -dBATCH -sDEVICE=jpeg -r300 -sOutputFile='page-%00d.jpeg' " + localmFilename;
-                //string s2= localmFilename.toUtf8().constData();
-                //system(localmFilename.toStdString().c_str());
-                //localmFilename = mFilename;
-                //mFilenamejpeg = "page-1.jpeg";
-                imageOrig.load(localmFilename);
-                localmFilename = mFilename;
+            // load and set data in Browzer
+            // if file exist in corrected open that else open file in Indz
+            myTimer.start();
+            //int nMilliseconds = myTimer.elapsed();
+            // do something..
+            secs = 0;
+            int mins = secs/60;
+            secs = secs - mins*60;
+            ui->lineEdit->setText(QString::number(mins) + "mins " + QString::number(secs) + " secs elapsed on this page(Right Click to update)");
+            QString newFile = mFilename;
+            newFile.replace("Inds","Corrected");
+            QFile sFile1(newFile);
+            if(sFile1.open(QFile::ReadOnly | QFile::Text))
+            {
+                QTextStream in(&sFile1);
+                QString text = in.readAll();
+                sFile.close();
+                ui->textBrowser->setPlainText(text);
+            } else {
+                QTextStream in(&sFile);
+                QString text = in.readAll();
+                sFile.close();
+                ui->textBrowser->setPlainText(text);
+            }
+            // load and show image:
+            QString localmFilename = mFilename;
+            localmFilename.replace("txt","jpeg");
+            //system("cd localmFilename");
+            //localmFilename = "gs -dNOPAUSE -dBATCH -sDEVICE=jpeg -r300 -sOutputFile='page-%00d.jpeg' " + localmFilename;
+            //string s2= localmFilename.toUtf8().constData();
+            //system(localmFilename.toStdString().c_str());
+            //localmFilename = mFilename;
+            //mFilenamejpeg = "page-1.jpeg";
+            imageOrig.load(localmFilename);
+            localmFilename = mFilename;
 
-                QGraphicsScene *graphic = new QGraphicsScene(this);
-                graphic->addPixmap(QPixmap::fromImage(imageOrig));
-                ui->graphicsView->setScene(graphic);
-                ui->graphicsView->adjustSize();
-                ui->graphicsView->fitInView(graphic->itemsBoundingRect(),Qt::KeepAspectRatio);
-                localmFilename = mFilename;
-                //mFilename.replace(QString("jpeg"),QString("txt"));*/
+            QGraphicsScene *graphic = new QGraphicsScene(this);
+            graphic->addPixmap(QPixmap::fromImage(imageOrig));
+            ui->graphicsView->setScene(graphic);
+            ui->graphicsView->adjustSize();
+            ui->graphicsView->fitInView(graphic->itemsBoundingRect(),Qt::KeepAspectRatio);
+            localmFilename = mFilename;
+            //mFilename.replace(QString("jpeg"),QString("txt"));*/
 
-                //GPage.clear(); TGPage.clear();
-                localmFilename.replace(QString("Inds"),QString("GDoc"));
-                //loadMap(localmFilename.toUtf8().constData(),GPage, "GPage");  localmFilename = mFilename;
-                //loadmaptoTrie(TGPage,GPage);
-                if (!prevTRig) on_actionSpell_Check_triggered();
-                //OPENSPELLFLAG = 0;
+            //GPage.clear(); TGPage.clear();
+            localmFilename.replace(QString("Inds"),QString("GDoc"));
+            //loadMap(localmFilename.toUtf8().constData(),GPage, "GPage");  localmFilename = mFilename;
+            //loadmaptoTrie(TGPage,GPage);
+            if (!prevTRig) on_actionSpell_Check_triggered();
+            //OPENSPELLFLAG = 0;
 
-                Graphics_view_zoom* z = new Graphics_view_zoom(ui->graphicsView);
-                z->set_modifiers(Qt::NoModifier);
-                // fill indexes according to Tesseract
-                /*
+            Graphics_view_zoom* z = new Graphics_view_zoom(ui->graphicsView);
+            z->set_modifiers(Qt::NoModifier);
+            // fill indexes according to Tesseract
+            /*
                 Pix * image1;
                 image1 = pixRead((localmFilename.replace(QString("txt"),QString("jpeg"))).toUtf8().constData());//phototest.tif
                 localmFilename = mFilename;
@@ -317,10 +317,10 @@ void MainWindow::on_actionOpen_triggered()
 
                  } */
 
-            } //if(sFile.open(QFile::ReadOnly | QFile::Text))
+        } //if(sFile.open(QFile::ReadOnly | QFile::Text))
 
 
-        } // if(!file.isEmpty())
+    } // if(!file.isEmpty())
 
 }//MainWindow::on_actionOpen_triggered()
 
@@ -329,79 +329,79 @@ bool ConvertSlpDevFlag =0;
 void MainWindow::on_actionSpell_Check_triggered()
 {
 
-        QString textBrowserText = ui->textBrowser->toPlainText();
-        QChar ch;
-        ch=textBrowserText[1];
-        textBrowserText+=" ";
-        string str1=textBrowserText.toUtf8().constData();
+    QString textBrowserText = ui->textBrowser->toPlainText();
+    QChar ch;
+    ch=textBrowserText[1];
+    textBrowserText+=" ";
+    string str1=textBrowserText.toUtf8().constData();
 
-        // load no of words
-        istringstream iss1(str1);
-        size_t WordCount = 0; string word1;
-        while(iss1 >> word1) WordCount++;
+    // load no of words
+    istringstream iss1(str1);
+    size_t WordCount = 0; string word1;
+    while(iss1 >> word1) WordCount++;
 
-        //str1 = toslp1(str1);
-        istringstream iss(str1);
-        string strHtml = "<html><body>"; string line;
-
-
-        int value = 0;
-        while (getline(iss, line)) {
-                    istringstream issw(line);
-                    string word;
-
-                    while(issw >> word){
-                        if(ConvertSlpDevFlag){
-                            string word1 = word;
-                            word = toslp1(word);
-                            string wordNext;
-                            if(hasM40PerAsci(word1)){wordNext = word1;}else{wordNext = toDev(word);}
-                            strHtml += wordNext; strHtml += " "; //cout << strHtml << endl;
-                            value ++;
-                        }
-                        else{
-                            string word1 = word;
-                            word = toslp1(word);
-                            string wordNext;
-                            //cout << GPage.size() <<  word << " " << GPage[word] << endl;
-                            if(hasM40PerAsci(word1)){wordNext = word1;}
-                            else if(GBook[(word)] > 0 ){wordNext = toDev(word); PWords[word]++;}
-                            //else if(CPairRight[word] >0) {wordNext = "<font color=\'purple\'>" + toDev(CPair[word]) + "</font>";}
-                            else if(PWords[word] > 0) { wordNext = "<font color=\'gray\'>" + toDev(word) + "</font>";}
-                            else if((Dict[word] ==0) && (PWords[word] == 0) && (CPair[word].size() > 0)) {
-                                wordNext = "<font color=\'purple\'>" + toDev(CPair[word]) + "</font>";
-                            } else {
-                            wordNext = findDictEntries(toslp1(word),Dict,PWords, word.size());//replace m1 with m2,m1 for combined search
-                            wordNext = find_and_replace_oddInstancesblue(wordNext);
-                            wordNext = find_and_replace_oddInstancesorange(wordNext);
-                            }
-                            strHtml += wordNext; strHtml += " "; //cout << strHtml << endl;
-                            value ++;
-                        }
-
-                    //cout << GPage[(word)] << endl;
-                    //Ui -> Dialog -> progressBar -> setValue(value);
-                    }
-            strHtml +="<br>"; // To add new line
-
-       }
-       strHtml += "</body></html>";
-       ui->textBrowser->setHtml(QString::fromStdString(strHtml));
-       //dialog->progressBar-> setValue(WordCount);
-
-       //secdialog.progressBar.setValue(WordCount);
+    //str1 = toslp1(str1);
+    istringstream iss(str1);
+    string strHtml = "<html><body>"; string line;
 
 
-       // load wordLineIndex map for pairing with WordImages
-       str1=textBrowserText.toUtf8().constData();
-       // str1 = clean(str1);
-       istringstream iss2(str1);
-       size_t WordCount2 = 0;
-       while (getline(iss2, line)) {
-                   istringstream issw(line);
-                   string word;
-                   while(issw >> word){ wordLineIndex[(word + "###" + line)] = WordCount2; WordCount2++;} // clean(word) instead of word
-       }
+    int value = 0;
+    while (getline(iss, line)) {
+        istringstream issw(line);
+        string word;
+
+        while(issw >> word){
+            if(ConvertSlpDevFlag){
+                string word1 = word;
+                word = toslp1(word);
+                string wordNext;
+                if(hasM40PerAsci(word1)){wordNext = word1;}else{wordNext = toDev(word);}
+                strHtml += wordNext; strHtml += " "; //cout << strHtml << endl;
+                value ++;
+            }
+            else{
+                string word1 = word;
+                word = toslp1(word);
+                string wordNext;
+                //cout << GPage.size() <<  word << " " << GPage[word] << endl;
+                if(hasM40PerAsci(word1)){wordNext = word1;}
+                else if(GBook[(word)] > 0 ){wordNext = toDev(word); PWords[word]++;}
+                //else if(CPairRight[word] >0) {wordNext = "<font color=\'purple\'>" + toDev(CPair[word]) + "</font>";}
+                else if(PWords[word] > 0) { wordNext = "<font color=\'gray\'>" + toDev(word) + "</font>";}
+                else if((Dict[word] ==0) && (PWords[word] == 0) && (CPair[word].size() > 0)) {
+                    wordNext = "<font color=\'purple\'>" + toDev(CPair[word]) + "</font>";
+                } else {
+                    wordNext = findDictEntries(toslp1(word),Dict,PWords, word.size());//replace m1 with m2,m1 for combined search
+                    wordNext = find_and_replace_oddInstancesblue(wordNext);
+                    wordNext = find_and_replace_oddInstancesorange(wordNext);
+                }
+                strHtml += wordNext; strHtml += " "; //cout << strHtml << endl;
+                value ++;
+            }
+
+            //cout << GPage[(word)] << endl;
+            //Ui -> Dialog -> progressBar -> setValue(value);
+        }
+        strHtml +="<br>"; // To add new line
+
+    }
+    strHtml += "</body></html>";
+    ui->textBrowser->setHtml(QString::fromStdString(strHtml));
+    //dialog->progressBar-> setValue(WordCount);
+
+    //secdialog.progressBar.setValue(WordCount);
+
+
+    // load wordLineIndex map for pairing with WordImages
+    str1=textBrowserText.toUtf8().constData();
+    // str1 = clean(str1);
+    istringstream iss2(str1);
+    size_t WordCount2 = 0;
+    while (getline(iss2, line)) {
+        istringstream issw(line);
+        string word;
+        while(issw >> word){ wordLineIndex[(word + "###" + line)] = WordCount2; WordCount2++;} // clean(word) instead of word
+    }
 
 }
 
@@ -495,110 +495,110 @@ void MainWindow::mousePressEvent(QMouseEvent *ev)
         QString str1 = cursor.selectedText();
         selectedStr = str1.toUtf8().constData();
 
-    // code to display options on rightclick
-    ui->textBrowser->setContextMenuPolicy(Qt::CustomContextMenu);//IMP TO AVOID UNDO ETC AFTER SELECTING A SUGGESTION
-    QMenu* popup_menu = ui->textBrowser->createStandardContextMenu();
-    QMenu* spell_menu;
-    spell_menu = new QMenu("suggestions",this);
-    //QAction* action = tr("tihor");
-    QAction* act;
-    //vector<string> Words =  print5NearestEntries(TGPage,selectedStr);
-    vector<string>  Words1 =  print5NearestEntries(TGBook,selectedStr);
-    vector<string> Alligned =  print5NearestEntries(TGBookP,selectedStr);
-    vector<string> PWords1 =  print5NearestEntries(TPWords,selectedStr);
-    string PairSugg = print2OCRSugg(selectedStr, Alligned[0], ConfPmap,Dict); // map<string,int>&
-    vector<string>  Words = print1OCRNearestEntries(toslp1(selectedStr),vIBook);
-    //cout <<" here " << toDev(Words[0]) << endl;
+        // code to display options on rightclick
+        ui->textBrowser->setContextMenuPolicy(Qt::CustomContextMenu);//IMP TO AVOID UNDO ETC AFTER SELECTING A SUGGESTION
+        QMenu* popup_menu = ui->textBrowser->createStandardContextMenu();
+        QMenu* spell_menu;
+        spell_menu = new QMenu("suggestions",this);
+        //QAction* action = tr("tihor");
+        QAction* act;
+        //vector<string> Words =  print5NearestEntries(TGPage,selectedStr);
+        vector<string>  Words1 =  print5NearestEntries(TGBook,selectedStr);
+        vector<string> Alligned =  print5NearestEntries(TGBookP,selectedStr);
+        vector<string> PWords1 =  print5NearestEntries(TPWords,selectedStr);
+        string PairSugg = print2OCRSugg(selectedStr, Alligned[0], ConfPmap,Dict); // map<string,int>&
+        vector<string>  Words = print1OCRNearestEntries(toslp1(selectedStr),vIBook);
+        //cout <<" here " << toDev(Words[0]) << endl;
 
 
-    // find nearest confirming to OCR Sugg from Book
-    string nearestCOnfconfirmingSuggvec;
-    vector<string> vec = Words1;
-    int min= 100;
+        // find nearest confirming to OCR Sugg from Book
+        string nearestCOnfconfirmingSuggvec;
+        vector<string> vec = Words1;
+        int min= 100;
         for (size_t t=0;t<vec.size();t++){
-        vector<string> wordConfusions; vector<int> wCindex;
-        int minFactor = loadWConfusionsNindex1(selectedStr,vec[t],ConfPmap,wordConfusions,wCindex);
-        wordConfusions.clear(); wCindex.clear();
-        if(minFactor < min) {min = minFactor; nearestCOnfconfirmingSuggvec = vec[t];}
+            vector<string> wordConfusions; vector<int> wCindex;
+            int minFactor = loadWConfusionsNindex1(selectedStr,vec[t],ConfPmap,wordConfusions,wCindex);
+            wordConfusions.clear(); wCindex.clear();
+            if(minFactor < min) {min = minFactor; nearestCOnfconfirmingSuggvec = vec[t];}
         }
 
-    // find nearest confirming to OCR Sugg from PWords
-    string nearestCOnfconfirmingSuggvec1;
+        // find nearest confirming to OCR Sugg from PWords
+        string nearestCOnfconfirmingSuggvec1;
         vector<string> vec1 = PWords1;
         min= 100;
-            for (size_t t=0;t<vec1.size();t++){
+        for (size_t t=0;t<vec1.size();t++){
             vector<string> wordConfusions; vector<int> wCindex;
             int minFactor = loadWConfusionsNindex1(selectedStr,vec1[t],ConfPmap,wordConfusions,wCindex);
             wordConfusions.clear(); wCindex.clear();
             if(minFactor < min) {min = minFactor; nearestCOnfconfirmingSuggvec1 = vec1[t];}
+        }
+
+        vector<pair<int,string>> vecSugg,vecSugg1;
+        map<string, int> mapSugg;
+        string CSugg = CPair[toslp1(selectedStr)];
+        if(CSugg.size() > 0) mapSugg[toslp1(CSugg)]++;
+        if(Words.size() > 0)  mapSugg[toslp1(Words[0])]++;
+        if(Words1.size() > 0) mapSugg[toslp1(nearestCOnfconfirmingSuggvec)]++;
+        if(PWords1.size() > 0) mapSugg[toslp1(nearestCOnfconfirmingSuggvec1)]++;
+        if(PairSugg.size() > 0) mapSugg[toslp1(PairSugg)]++;
+        mapSugg[SamasBreakLRCorrect(toslp1(selectedStr),Dict,PWords,TPWords,TPWordsP)]++;
+        string s1 = toslp1(selectedStr);
+        string nearestCOnfconfirmingSuggvecFont = "";
+        min= 100;
+        for (size_t t=0;t<vec.size();t++){
+            vector<string> wordConfusions; vector<int> wCindex;
+            int minFactor = loadWConfusionsNindex1(s1,vec[t],ConfPmapFont,wordConfusions,wCindex);
+            wordConfusions.clear(); wCindex.clear();
+            if(minFactor < min) {min = minFactor; nearestCOnfconfirmingSuggvecFont = vec[t];}
+        }
+        if(nearestCOnfconfirmingSuggvecFont.size() >0 ) mapSugg[nearestCOnfconfirmingSuggvecFont]++;
+
+        string PairSuggFont = "";
+        if(Alligned.size() > 0) PairSuggFont = print2OCRSugg(s1, Alligned[0], ConfPmap,Dict);
+        if(PairSuggFont.size() >0 ) mapSugg[PairSuggFont]++;
+
+        string sugg9 = "";
+        sugg9 = generatePossibilitesNsuggest(s1,TopConfusions,TopConfusionsMask,Dict,SRules);
+        if(sugg9.size() >0 ) mapSugg[sugg9]++;
+
+        map<string, int> mapSugg1;
+        for(size_t ksugg1 = 0; ksugg1 < 5; ksugg1++) {
+            if(Words.size() > ksugg1)  mapSugg1[toslp1(Words[ksugg1])]++;
+            if(Words1.size() > ksugg1) mapSugg1[toslp1(Words1[ksugg1])]++;
+            if(PWords1.size() > ksugg1) mapSugg1[toslp1(PWords1[ksugg1])]++;
+        }
+
+
+        for( map<string,int>::const_iterator eptr=mapSugg.begin(); eptr!=mapSugg.end(); eptr++){
+            vecSugg.push_back(make_pair(editDist(toslp1(eptr->first),toslp1(selectedStr)),eptr->first));
+        }
+
+        for( map<string,int>::const_iterator eptr=mapSugg1.begin(); eptr!=mapSugg1.end(); eptr++){
+            vecSugg1.push_back(make_pair(editDist(toslp1(eptr->first),toslp1(selectedStr)),eptr->first));
+        }
+
+
+        //vecSugg.push_back(make_pair(editDist(toslp1(selectedStr),selectedStr),selectedStr));
+        //if(Words.size() > 0) vecSugg.push_back(make_pair(editDist(toslp1(selectedStr),toslp1(Words[0])),Words[0]));
+        //vecSugg.push_back(make_pair(editDist(toslp1(selectedStr),toslp1(Words1[0])),Words1[0]));
+        //vecSugg.push_back(make_pair(editDist(toslp1(selectedStr),toslp1(PairSugg)),PairSugg));
+        sort(vecSugg.begin(), vecSugg.end()); sort(vecSugg1.begin(), vecSugg1.end());
+        //cout << vec[0]  << " " << vec[1]  << " " << vec[2]  << " " << newtrie.next.size() << endl;
+        //Words = suggestions((selectedStr));
+        for ( uint bitarrayi = 0; bitarrayi < vecSugg.size(); bitarrayi++) {
+            act = new QAction( QString::fromStdString(toDev(vecSugg[bitarrayi].second)) , spell_menu);
+            //cout<<vecSugg[bitarrayi].first<<endl;
+            spell_menu->addAction(act);
+        }
+
+        for ( uint bitarrayi = 0; bitarrayi < vecSugg1.size(); bitarrayi++) {
+            if(mapSugg[vecSugg1[bitarrayi].second] < 1){
+                act = new QAction(QString::fromStdString(toDev(vecSugg1[bitarrayi].second)), spell_menu);
+                //cout<<vecSugg1[bitarrayi].first<<endl;
+                spell_menu->addAction(act);
             }
-
-    vector<pair<int,string>> vecSugg,vecSugg1;
-    map<string, int> mapSugg;
-    string CSugg = CPair[toslp1(selectedStr)];
-    if(CSugg.size() > 0) mapSugg[toslp1(CSugg)]++;
-    if(Words.size() > 0)  mapSugg[toslp1(Words[0])]++;
-    if(Words1.size() > 0) mapSugg[toslp1(nearestCOnfconfirmingSuggvec)]++;
-    if(PWords1.size() > 0) mapSugg[toslp1(nearestCOnfconfirmingSuggvec1)]++;
-    if(PairSugg.size() > 0) mapSugg[toslp1(PairSugg)]++;
-    mapSugg[SamasBreakLRCorrect(toslp1(selectedStr),Dict,PWords,TPWords,TPWordsP)]++;
-    string s1 = toslp1(selectedStr);
-    string nearestCOnfconfirmingSuggvecFont = "";
-    min= 100;
-    for (size_t t=0;t<vec.size();t++){
-        vector<string> wordConfusions; vector<int> wCindex;
-        int minFactor = loadWConfusionsNindex1(s1,vec[t],ConfPmapFont,wordConfusions,wCindex);
-        wordConfusions.clear(); wCindex.clear();
-        if(minFactor < min) {min = minFactor; nearestCOnfconfirmingSuggvecFont = vec[t];}
-    }
-    if(nearestCOnfconfirmingSuggvecFont.size() >0 ) mapSugg[nearestCOnfconfirmingSuggvecFont]++;
-
-    string PairSuggFont = "";
-    if(Alligned.size() > 0) PairSuggFont = print2OCRSugg(s1, Alligned[0], ConfPmap,Dict);
-    if(PairSuggFont.size() >0 ) mapSugg[PairSuggFont]++;
-
-    string sugg9 = "";
-    sugg9 = generatePossibilitesNsuggest(s1,TopConfusions,TopConfusionsMask,Dict,SRules);
-    if(sugg9.size() >0 ) mapSugg[sugg9]++;
-
-    map<string, int> mapSugg1;
-    for(size_t ksugg1 = 0; ksugg1 < 5; ksugg1++) {
-    if(Words.size() > ksugg1)  mapSugg1[toslp1(Words[ksugg1])]++;
-    if(Words1.size() > ksugg1) mapSugg1[toslp1(Words1[ksugg1])]++;
-    if(PWords1.size() > ksugg1) mapSugg1[toslp1(PWords1[ksugg1])]++;
-    }
-
-
-    for( map<string,int>::const_iterator eptr=mapSugg.begin(); eptr!=mapSugg.end(); eptr++){
-        vecSugg.push_back(make_pair(editDist(toslp1(eptr->first),toslp1(selectedStr)),eptr->first));
-    }
-
-    for( map<string,int>::const_iterator eptr=mapSugg1.begin(); eptr!=mapSugg1.end(); eptr++){
-        vecSugg1.push_back(make_pair(editDist(toslp1(eptr->first),toslp1(selectedStr)),eptr->first));
-    }
-
-
-    //vecSugg.push_back(make_pair(editDist(toslp1(selectedStr),selectedStr),selectedStr));
-    //if(Words.size() > 0) vecSugg.push_back(make_pair(editDist(toslp1(selectedStr),toslp1(Words[0])),Words[0]));
-    //vecSugg.push_back(make_pair(editDist(toslp1(selectedStr),toslp1(Words1[0])),Words1[0]));
-    //vecSugg.push_back(make_pair(editDist(toslp1(selectedStr),toslp1(PairSugg)),PairSugg));
-    sort(vecSugg.begin(), vecSugg.end()); sort(vecSugg1.begin(), vecSugg1.end());
-    //cout << vec[0]  << " " << vec[1]  << " " << vec[2]  << " " << newtrie.next.size() << endl;
-    //Words = suggestions((selectedStr));
-    for ( uint bitarrayi = 0; bitarrayi < vecSugg.size(); bitarrayi++) {
-        act = new QAction( QString::fromStdString(toDev(vecSugg[bitarrayi].second)) , spell_menu);
-        //cout<<vecSugg[bitarrayi].first<<endl;
-        spell_menu->addAction(act);
         }
-
-    for ( uint bitarrayi = 0; bitarrayi < vecSugg1.size(); bitarrayi++) {
-        if(mapSugg[vecSugg1[bitarrayi].second] < 1){
-        act = new QAction(QString::fromStdString(toDev(vecSugg1[bitarrayi].second)), spell_menu);
-        //cout<<vecSugg1[bitarrayi].first<<endl;
-        spell_menu->addAction(act);
-        }
-        }
-    /*Words =  print5NearestEntries(TDict,selectedStr);
+        /*Words =  print5NearestEntries(TDict,selectedStr);
     if (Words.size() > 0) {
         act = new QAction(QString::fromStdString(toDev(Words[0])), spell_menu);
 
@@ -606,14 +606,14 @@ void MainWindow::mousePressEvent(QMouseEvent *ev)
 
     }*/
 
-    popup_menu->insertSeparator(popup_menu->actions()[0]);
-    popup_menu->insertMenu(popup_menu->actions()[0],spell_menu);
-    connect(spell_menu, SIGNAL(triggered(QAction*)), this, SLOT(menuSelection(QAction*)));
-    popup_menu->exec(ev->globalPos());
-    popup_menu->close(); popup_menu->clear();
-    //ui->textBrowser->createStandardContextMenu()->clear();
-    //cursor.select(QTextCursor::WordUnderCursor);
-    vecSugg.clear(); Words1.clear(); Words.clear(); Alligned.clear(); PairSugg.clear();
+        popup_menu->insertSeparator(popup_menu->actions()[0]);
+        popup_menu->insertMenu(popup_menu->actions()[0],spell_menu);
+        connect(spell_menu, SIGNAL(triggered(QAction*)), this, SLOT(menuSelection(QAction*)));
+        popup_menu->exec(ev->globalPos());
+        popup_menu->close(); popup_menu->clear();
+        //ui->textBrowser->createStandardContextMenu()->clear();
+        //cursor.select(QTextCursor::WordUnderCursor);
+        vecSugg.clear(); Words1.clear(); Words.clear(); Alligned.clear(); PairSugg.clear();
     } // if right click
 
 }// if mouse event
@@ -718,7 +718,7 @@ void MainWindow::menuSelection(QAction* action)
 
 
     // write code to pick word one by one in string word
-/*
+    /*
     // code to search for a string in another string
     // say word has 1st word from Text Browzer
     int pos = word.find("</a>", 0);
@@ -730,7 +730,7 @@ void MainWindow::menuSelection(QAction* action)
         else  alltextnew + = word;
     }else alltextnew + = word;
     */
-  //qDebug() << "Triggered: " << action->text();
+    //qDebug() << "Triggered: " << action->text();
 }
 
 void MainWindow::on_actionNew_triggered()
@@ -751,14 +751,14 @@ void MainWindow::on_actionSave_triggered()
     if (mFilename=="Untitled"){
         on_actionSave_As_triggered();
     }else{ QString localFilename = mFilename; localFilename.replace("Inds","Corrected");
-                QFile sFile(localFilename);
-                  if(sFile.open(QFile::WriteOnly | QFile::Text))
-                  {
-                      QTextStream out(&sFile);
-                      out << ui->textBrowser->toPlainText();
-                      sFile.flush();
-                      sFile.close();
-                  }
+        QFile sFile(localFilename);
+        if(sFile.open(QFile::WriteOnly | QFile::Text))
+        {
+            QTextStream out(&sFile);
+            out << ui->textBrowser->toPlainText();
+            sFile.flush();
+            sFile.close();
+        }
     }
     ConvertSlpDevFlag =0;
     //on_actionSpell_Check_triggered();
@@ -770,32 +770,32 @@ void MainWindow::on_actionLoadGDocPage_triggered()
     if (mFilename=="Untitled"){
         on_actionSave_As_triggered();
     }else{
-                QString str1 = mFilename;
-                str1.replace("Inds","Corrected");
-                QFile sFile(str1);
-                  if(sFile.open(QFile::WriteOnly | QFile::Text))
-                  {
-                      QTextStream out(&sFile);
-                      out << ui->textBrowser->toPlainText();
-                      sFile.flush();
-                      sFile.close();
-                  }
-                  //qDebug() << str1 << endl;
-                  loadMap(str1.toUtf8().constData(),PWords,"PWords");
+        QString str1 = mFilename;
+        str1.replace("Inds","Corrected");
+        QFile sFile(str1);
+        if(sFile.open(QFile::WriteOnly | QFile::Text))
+        {
+            QTextStream out(&sFile);
+            out << ui->textBrowser->toPlainText();
+            sFile.flush();
+            sFile.close();
+        }
+        //qDebug() << str1 << endl;
+        loadMap(str1.toUtf8().constData(),PWords,"PWords");
 
-                  map<string, int> PWordspage;
-                  loadMap(str1.toUtf8().constData(),PWordspage,"PWordspage");
-                  loadmaptoTrie(TPWords, PWordspage);
+        map<string, int> PWordspage;
+        loadMap(str1.toUtf8().constData(),PWordspage,"PWordspage");
+        loadmaptoTrie(TPWords, PWordspage);
 
-                  vector<string> wrong,right;
-                  QString str2 = str1; str2.replace("Corrected","Inds");
-                  generateCorrectionPairs(wrong,right,str2.toUtf8().constData(), str1.toUtf8().constData());
-                  loadConfusionsFont(wrong,right,ConfPmapFont);
-                  loadConfusionsFont(wrong,right,ConfPmap);
-                  TopConfusions.clear(); TopConfusionsMask.clear();
-                  loadTopConfusions(ConfPmap,TopConfusions,TopConfusionsMask);
+        vector<string> wrong,right;
+        QString str2 = str1; str2.replace("Corrected","Inds");
+        generateCorrectionPairs(wrong,right,str2.toUtf8().constData(), str1.toUtf8().constData());
+        loadConfusionsFont(wrong,right,ConfPmapFont);
+        loadConfusionsFont(wrong,right,ConfPmap);
+        TopConfusions.clear(); TopConfusionsMask.clear();
+        loadTopConfusions(ConfPmap,TopConfusions,TopConfusionsMask);
 
-                  //on_actionSpell_Check_triggered();
+        //on_actionSpell_Check_triggered();
     }
 
 }
@@ -840,7 +840,7 @@ void MainWindow::on_actionLoadData_triggered()
 {
     //cout << " here reached" << endl;
     if(FirstFlag){
-       QString  localmFilename1 = mFilename;
+        QString  localmFilename1 = mFilename;
 
         // loading Dictionary locally
         string localmFilename1n = localmFilename1.toUtf8().constData();
@@ -861,25 +861,25 @@ void MainWindow::on_actionLoadData_triggered()
         loadStr1 = loadStr + " Please wait...";
         ui->textBrowser->setPlainText(loadStr1);
         on_actionLoadOCRWords_triggered();
-         ui->progressBar->setValue(40);
+        ui->progressBar->setValue(40);
 
-         loadStr += "\n \n Loading Domain Words";
-         loadStr1 = loadStr + " Please wait...";
-         ui->textBrowser->setPlainText(loadStr1);
-         on_actionLoadDomain_triggered();
-          ui->progressBar->setValue(60);
+        loadStr += "\n \n Loading Domain Words";
+        loadStr1 = loadStr + " Please wait...";
+        ui->textBrowser->setPlainText(loadStr1);
+        on_actionLoadDomain_triggered();
+        ui->progressBar->setValue(60);
 
-          loadStr += "\n \nLoading Substrings and Sandhi Rules";
-          loadStr1 = loadStr + " Please wait...";
-          ui->textBrowser->setPlainText(loadStr1);
-          on_actionLoadSubPS_triggered();
-           ui->progressBar->setValue(80);
+        loadStr += "\n \nLoading Substrings and Sandhi Rules";
+        loadStr1 = loadStr + " Please wait...";
+        ui->textBrowser->setPlainText(loadStr1);
+        on_actionLoadSubPS_triggered();
+        ui->progressBar->setValue(80);
 
-           loadStr += "\n \nLoading Confusions";
-           loadStr1 = loadStr + " Please wait...";
-           ui->textBrowser->setPlainText(loadStr1);
-           on_actionLoadConfusions_triggered();
-            ui->progressBar->setValue(100);
+        loadStr += "\n \nLoading Confusions";
+        loadStr1 = loadStr + " Please wait...";
+        ui->textBrowser->setPlainText(loadStr1);
+        on_actionLoadConfusions_triggered();
+        ui->progressBar->setValue(100);
 
         /*
 
@@ -1001,7 +1001,7 @@ void MainWindow::on_actionLoadData_triggered()
 
 
         }*/
-        }// if(FirstFlag)
+    }// if(FirstFlag)
 }
 
 void MainWindow::on_actionLoadDict_triggered()
@@ -1063,11 +1063,11 @@ void MainWindow::on_actionLoadSubPS_triggered()
 
     localmFilename1.replace("Inds/","LSTM");
     ifstream myfile(localmFilename1.toUtf8().constData());
-              if (myfile.is_open())
-              { string str1, str2,line;
-            while (getline(myfile,line)) {istringstream slinenew(line); slinenew >> str1; slinenew >> str2;
-                if(str2.size() >0) LSTM[str1] = str2;}
-              }
+    if (myfile.is_open())
+    { string str1, str2,line;
+        while (getline(myfile,line)) {istringstream slinenew(line); slinenew >> str1; slinenew >> str2;
+            if(str2.size() >0) LSTM[str1] = str2;}
+    }
     cout<< LSTM.size() << "LSTM Pairs Loaded";
     localmFilename1 = mFilename1;
 
@@ -1087,11 +1087,11 @@ void MainWindow::on_actionLoadConfusions_triggered()
     //QString lfR = mFilename; lfR.replace("Inds/page-1.txt","WrongAllRight");
     QString localmFilename1 = mFilename;
     localmFilename1.replace("Inds/","CPair");
-   loadConfusions(localmFilename1.toUtf8().constData(), ConfPmap);localmFilename1 = mFilename;
-   //loadCPair(localmFilename1.toUtf8().constData(), lfR.toUtf8().constData(), CPair);*./
+    loadConfusions(localmFilename1.toUtf8().constData(), ConfPmap);localmFilename1 = mFilename;
+    //loadCPair(localmFilename1.toUtf8().constData(), lfR.toUtf8().constData(), CPair);*./
 
     //QString localmFilename1 = mFilename1;
-     /*localmFilename1.replace("Inds/","ConfPmap.bin");
+    /*localmFilename1.replace("Inds/","ConfPmap.bin");
     std::ifstream ss2(localmFilename1.toUtf8().constData());
     boost::archive::text_iarchive oarch2(ss2);
     oarch2 >> ConfPmap; ss2.close();*/
@@ -1145,19 +1145,19 @@ void MainWindow::on_actionSugg_triggered()
 void MainWindow::on_actionToSlp1_triggered()
 {
 
-        int nMilliseconds = myTimer.elapsed();
-        secs = nMilliseconds/1000;
-        int mins = secs/60;
-        secs = secs - mins*60;
-        ui->lineEdit->setText(QString::number(mins) + "mins " + QString::number(secs) + " secs elapsed on this page(Right Click to update)");
-        QTextCursor cursor = ui->textBrowser->textCursor();
-        //cursor.select(QTextCursor::WordUnderCursor);
-        QString str1 = cursor.selectedText();
-        selectedStr = str1.toUtf8().constData();
-        cursor.beginEditBlock();
-        cursor.removeSelectedText();
-        cursor.insertText(QString::fromStdString((toslp1(selectedStr))));
-        cursor.endEditBlock();
+    int nMilliseconds = myTimer.elapsed();
+    secs = nMilliseconds/1000;
+    int mins = secs/60;
+    secs = secs - mins*60;
+    ui->lineEdit->setText(QString::number(mins) + "mins " + QString::number(secs) + " secs elapsed on this page(Right Click to update)");
+    QTextCursor cursor = ui->textBrowser->textCursor();
+    //cursor.select(QTextCursor::WordUnderCursor);
+    QString str1 = cursor.selectedText();
+    selectedStr = str1.toUtf8().constData();
+    cursor.beginEditBlock();
+    cursor.removeSelectedText();
+    cursor.insertText(QString::fromStdString((toslp1(selectedStr))));
+    cursor.endEditBlock();
 
 }
 
@@ -1178,159 +1178,159 @@ void MainWindow::on_actionCreateSuggestionLog_triggered()
 
     while(1) {
 
-    string nos = "0123456789";
-    string localFilenameI = strI.toUtf8().constData();
-    size_t loc = localFilenameI.find(".txt");
-    string s = localFilenameI.substr(loc-1,1); // page-123.txt s = 3
-    string no;
+        string nos = "0123456789";
+        string localFilenameI = strI.toUtf8().constData();
+        size_t loc = localFilenameI.find(".txt");
+        string s = localFilenameI.substr(loc-1,1); // page-123.txt s = 3
+        string no;
 
-    vector<string> wrong, right;
-    while(nos.find(s) != string::npos) { no = s + no; loc--; s = localFilenameI.substr(loc-1,1);  } // if s in nos, s = 2  no = 23, s = 1 no = 123, s = - break
-    //cout << stoi(no) + 1 << endl;
-    localFilenameI.replace(loc,no.size(),to_string(page_no));//to_string(stoi(no) + 1)
-    //cout << localFilename << endl;
-    //QString fileI = QString::fromStdString(localFilenameI);
+        vector<string> wrong, right;
+        while(nos.find(s) != string::npos) { no = s + no; loc--; s = localFilenameI.substr(loc-1,1);  } // if s in nos, s = 2  no = 23, s = 1 no = 123, s = - break
+        //cout << stoi(no) + 1 << endl;
+        localFilenameI.replace(loc,no.size(),to_string(page_no));//to_string(stoi(no) + 1)
+        //cout << localFilename << endl;
+        //QString fileI = QString::fromStdString(localFilenameI);
 
-    //Load page1 of C
+        //Load page1 of C
 
-    string localFilenameC = strC.toUtf8().constData();
-    loc = localFilenameC.find(".txt");
-    s = localFilenameC.substr(loc-1,1); // page-123.txt s = 3
-    no ="";
-    while(nos.find(s) != string::npos) { no = s + no; loc--; s = localFilenameC.substr(loc-1,1);  } // if s in nos, s = 2  no = 23, s = 1 no = 123, s = - break
-    //cout << stoi(no) + 1 << endl;
-    localFilenameC.replace(loc,no.size(),to_string(page_no));//to_string(stoi(no) + 1)
-    //cout << localFilename << endl;
-   // QString fileC = QString::fromStdString(localFilenameC);
+        string localFilenameC = strC.toUtf8().constData();
+        loc = localFilenameC.find(".txt");
+        s = localFilenameC.substr(loc-1,1); // page-123.txt s = 3
+        no ="";
+        while(nos.find(s) != string::npos) { no = s + no; loc--; s = localFilenameC.substr(loc-1,1);  } // if s in nos, s = 2  no = 23, s = 1 no = 123, s = - break
+        //cout << stoi(no) + 1 << endl;
+        localFilenameC.replace(loc,no.size(),to_string(page_no));//to_string(stoi(no) + 1)
+        //cout << localFilename << endl;
+        // QString fileC = QString::fromStdString(localFilenameC);
 
-    // NOW localFilenameI and localFilenameC has page1 of both
-    //cout << localFilenameI << " " << localFilenameC << endl;
-    // load fileI in vecpI and
-    vector<string> vecpI, vecpC;
-    map<string, bool> isAscii;
-    std::ifstream sIpage(localFilenameI);
-    if (!(sIpage.is_open())) break; // break the while loop for page_no
-    string localstr;
-    while(sIpage >> localstr) vecpI.push_back(toslp1(localstr)); sIpage.close();
-    std::ifstream sCpage(localFilenameC);
-    while(sCpage >> localstr) { if(hasM40PerAsci(localstr)){isAscii[toslp1(localstr)] = 1;}  vecpC.push_back(toslp1(localstr));} sIpage.close();
+        // NOW localFilenameI and localFilenameC has page1 of both
+        //cout << localFilenameI << " " << localFilenameC << endl;
+        // load fileI in vecpI and
+        vector<string> vecpI, vecpC;
+        map<string, bool> isAscii;
+        std::ifstream sIpage(localFilenameI);
+        if (!(sIpage.is_open())) break; // break the while loop for page_no
+        string localstr;
+        while(sIpage >> localstr) vecpI.push_back(toslp1(localstr)); sIpage.close();
+        std::ifstream sCpage(localFilenameC);
+        while(sCpage >> localstr) { if(hasM40PerAsci(localstr)){isAscii[toslp1(localstr)] = 1;}  vecpC.push_back(toslp1(localstr));} sIpage.close();
 
-    // if 1st word is wrong generate suggestions
-    int vGsz = vecpC.size(), vIsz =  vecpI.size();
-    if (vGsz >vIsz ) mapTyping[page_no] = vGsz - vIsz;
-    //cout << vGsz << " " << vIsz << endl;
-    int win = vGsz  - vIsz;
-    if(win<0) win = -1*win;
-    win = maxIG(win,5);
-    //cout << win << endl;
-    //float WER = 0;
-    // search for a word(pre space, post space as well) in Indsenz within win sized window in GDocs and if found then add to PWords
-    for(int t = 0; t < vIsz;t++){
-        size_t minedit = 1000;
-        string s1 = vecpI[t]; //(vGBook[t1].find(s1) != string::npos) || (vGBook[t1] == s1)
-        string sC;
-        for(int t1 = maxIG(t-win,0); t1 < min(t+win,vGsz); t1++){
-            string sCt1 = vecpC[t1];
-            size_t mineditIC = editDist(s1,sCt1);
-            if(mineditIC < minedit) {minedit = mineditIC; sC = sCt1;   }
-            if (sCt1 == s1) {/*WER++;*/ break;}
-        }
+        // if 1st word is wrong generate suggestions
+        int vGsz = vecpC.size(), vIsz =  vecpI.size();
+        if (vGsz >vIsz ) mapTyping[page_no] = vGsz - vIsz;
+        //cout << vGsz << " " << vIsz << endl;
+        int win = vGsz  - vIsz;
+        if(win<0) win = -1*win;
+        win = maxIG(win,5);
+        //cout << win << endl;
+        //float WER = 0;
+        // search for a word(pre space, post space as well) in Indsenz within win sized window in GDocs and if found then add to PWords
+        for(int t = 0; t < vIsz;t++){
+            size_t minedit = 1000;
+            string s1 = vecpI[t]; //(vGBook[t1].find(s1) != string::npos) || (vGBook[t1] == s1)
+            string sC;
+            for(int t1 = maxIG(t-win,0); t1 < min(t+win,vGsz); t1++){
+                string sCt1 = vecpC[t1];
+                size_t mineditIC = editDist(s1,sCt1);
+                if(mineditIC < minedit) {minedit = mineditIC; sC = sCt1;   }
+                if (sCt1 == s1) {/*WER++;*/ break;}
+            }
 
-        // now we have IndsWord in s1 and correct word in sC
-        //cout << s1 << " " << s1.size() << " " << sC << " " << sC.size()<< endl;
-        if((sC == (s1))){
-        mapCorrect[page_no]++; //cout<< " in correct words ke liye if" << endl;
-        }else if(!isAscii[sC]) { wrong.push_back(s1); right.push_back(sC);
-            //cout<< " inside incorrect words ke liye else" << endl;
-            vector<string>  Words1 =  print5NearestEntries(TGBook,s1); //2
-            if(Words1.size() == 0) Words1.push_back("");
-            string nearestCOnfconfirmingSuggvec; //1
-            vector<string> vec = Words1;
-            int min= 100;
+            // now we have IndsWord in s1 and correct word in sC
+            //cout << s1 << " " << s1.size() << " " << sC << " " << sC.size()<< endl;
+            if((sC == (s1))){
+                mapCorrect[page_no]++; //cout<< " in correct words ke liye if" << endl;
+            }else if(!isAscii[sC]) { wrong.push_back(s1); right.push_back(sC);
+                //cout<< " inside incorrect words ke liye else" << endl;
+                vector<string>  Words1 =  print5NearestEntries(TGBook,s1); //2
+                if(Words1.size() == 0) Words1.push_back("");
+                string nearestCOnfconfirmingSuggvec; //1
+                vector<string> vec = Words1;
+                int min= 100;
                 for (size_t t=0;t<vec.size();t++){
-                vector<string> wordConfusions; vector<int> wCindex;
-                int minFactor = loadWConfusionsNindex1(s1,vec[t],ConfPmap,wordConfusions,wCindex);
-                wordConfusions.clear(); wCindex.clear();
-                if(minFactor < min) {min = minFactor; nearestCOnfconfirmingSuggvec = vec[t];}
+                    vector<string> wordConfusions; vector<int> wCindex;
+                    int minFactor = loadWConfusionsNindex1(s1,vec[t],ConfPmap,wordConfusions,wCindex);
+                    wordConfusions.clear(); wCindex.clear();
+                    if(minFactor < min) {min = minFactor; nearestCOnfconfirmingSuggvec = vec[t];}
                 }
-            //cout << "sz" << Words1.size() << " "<< Words1[0]<< endl;
-            if(nearestCOnfconfirmingSuggvec == (sC)){mapSugg1[page_no]++; }
-            /*else*/ if((Words1[0] == (sC))){mapSugg2[page_no]++; }
-            /*else*/ {
+                //cout << "sz" << Words1.size() << " "<< Words1[0]<< endl;
+                if(nearestCOnfconfirmingSuggvec == (sC)){mapSugg1[page_no]++; }
+                /*else*/ if((Words1[0] == (sC))){mapSugg2[page_no]++; }
+                /*else*/ {
 
-                vector<string> Alligned =  print5NearestEntries(TGBookP,s1); //6
-                if(Alligned.size() == 0) Alligned.push_back("");
+                    vector<string> Alligned =  print5NearestEntries(TGBookP,s1); //6
+                    if(Alligned.size() == 0) Alligned.push_back("");
 
-                string PairSugg = "";
-                if(Alligned.size() > 0) PairSugg = print2OCRSugg(s1, Alligned[0], ConfPmap,Dict);//3
-                //cout << sC << "PairSugg " << PairSugg<<endl;
-                if(PairSugg == sC) {  mapSugg3[page_no]++;}
-                /*else*/{ vector<string>  Words = print1OCRNearestEntries(toslp1(s1),vIBook); // 4 primary doc based
-                    if(Words.size() == 0) Words.push_back("");
-                    if(Words[0] == (sC)) { mapSugg4[page_no]++;  }
-                    /*else*/ { string samassugg = SamasBreakLRCorrect(toslp1(s1),Dict,PWords,TPWords,TPWordsP); // 5
-                        if(samassugg == sC) { mapSugg5[page_no]++; }
-                         /*else*/ {
-                            vector<string> PWords1 =  print5NearestEntries(TPWords,s1); // 6
-                            if(PWords1.size() == 0) PWords1.push_back("");
-                            if(PWords1[0] == (sC)) { mapSugg6[page_no]++; }
-                             /*else*/ {string nearestCOnfconfirmingSuggvecFont;
-                                int min= 100;
+                    string PairSugg = "";
+                    if(Alligned.size() > 0) PairSugg = print2OCRSugg(s1, Alligned[0], ConfPmap,Dict);//3
+                    //cout << sC << "PairSugg " << PairSugg<<endl;
+                    if(PairSugg == sC) {  mapSugg3[page_no]++;}
+                    /*else*/{ vector<string>  Words = print1OCRNearestEntries(toslp1(s1),vIBook); // 4 primary doc based
+                        if(Words.size() == 0) Words.push_back("");
+                        if(Words[0] == (sC)) { mapSugg4[page_no]++;  }
+                        /*else*/ { string samassugg = SamasBreakLRCorrect(toslp1(s1),Dict,PWords,TPWords,TPWordsP); // 5
+                            if(samassugg == sC) { mapSugg5[page_no]++; }
+                            /*else*/ {
+                                vector<string> PWords1 =  print5NearestEntries(TPWords,s1); // 6
+                                if(PWords1.size() == 0) PWords1.push_back("");
+                                if(PWords1[0] == (sC)) { mapSugg6[page_no]++; }
+                                /*else*/ {string nearestCOnfconfirmingSuggvecFont;
+                                    int min= 100;
                                     for (size_t t=0;t<vec.size();t++){
-                                    vector<string> wordConfusions; vector<int> wCindex;
-                                    int minFactor = loadWConfusionsNindex1(s1,vec[t],ConfPmapFont,wordConfusions,wCindex);
-                                    wordConfusions.clear(); wCindex.clear();
-                                    if(minFactor < min) {min = minFactor; nearestCOnfconfirmingSuggvecFont = vec[t];}
+                                        vector<string> wordConfusions; vector<int> wCindex;
+                                        int minFactor = loadWConfusionsNindex1(s1,vec[t],ConfPmapFont,wordConfusions,wCindex);
+                                        wordConfusions.clear(); wCindex.clear();
+                                        if(minFactor < min) {min = minFactor; nearestCOnfconfirmingSuggvecFont = vec[t];}
                                     }
-                                if(nearestCOnfconfirmingSuggvecFont == sC) {mapSugg7[page_no]++;}
-                                /*else*/{
-                                    /*string PairSuggFont = "";
+                                    if(nearestCOnfconfirmingSuggvecFont == sC) {mapSugg7[page_no]++;}
+                                    /*else*/{
+                                        /*string PairSuggFont = "";
                                     if(Alligned.size() > 0) PairSuggFont = print2OCRSugg(s1, Alligned[0], ConfPmap,Dict);//3
                                     //cout << sC << "PairSugg " << PairSugg<<endl;
                                     if(PairSuggFont == sC) {  mapSugg8[page_no]++;}*/
-                                    vector<string> Wordsdict;  {Wordsdict =  print5NearestEntries(TDict,s1);}
-                                    if((Wordsdict.size()>0)&&(Wordsdict[0] == sC)) {  mapSugg8[page_no]++; }
-                                    /*else*/{
-                                        string sugg9 = generatePossibilitesNsuggest(s1,TopConfusions,TopConfusionsMask,Dict,SRules);
-                                        if(sugg9 == sC) {  mapSugg9[page_no]++;
-                                        //cout << s1 << " "<<sC << endl;
+                                        vector<string> Wordsdict;  {Wordsdict =  print5NearestEntries(TDict,s1);}
+                                        if((Wordsdict.size()>0)&&(Wordsdict[0] == sC)) {  mapSugg8[page_no]++; }
+                                        /*else*/{
+                                            string sugg9 = generatePossibilitesNsuggest(s1,TopConfusions,TopConfusionsMask,Dict,SRules);
+                                            if(sugg9 == sC) {  mapSugg9[page_no]++;
+                                                //cout << s1 << " "<<sC << endl;
+                                            }
+                                            /*else*/{ if(LSTM[s1] == sC) {mapSugg10[page_no]++;
+                                                    cout << s1 << " lstm " << sC <<endl;}
+                                                else mapTyping[page_no]++;}
                                         }
-                                        /*else*/{ if(LSTM[s1] == sC) {mapSugg10[page_no]++;
-                                            cout << s1 << " lstm " << sC <<endl;}
-                                            else mapTyping[page_no]++;}
                                     }
                                 }
                             }
                         }
                     }
+
                 }
 
-            }
-
-        } else{mapTyping[page_no]++;} // else
-    //cout << mapCorrect[1]<< " " << mapTyping[1]<< " " <<mapSugg1[1]<< " " <<mapSugg2[1]<< " " <<mapSugg3[1]<< " " <<mapSugg4[1]<< " " <<mapSugg5[1]<< " " <<mapSugg6[1]<<endl;
-    //cout << "here" << endl;
-    }// for 1st page ends
-    mapinCorrect[page_no] = vIsz - mapCorrect[page_no];
-    //Loading PWords:-
-    cout << "page_no = "<< page_no << endl;
-    loadMap(localFilenameC,PWords,"PWords");
-    map<string, int> PWordspage;
-    loadMap(localFilenameC,PWordspage,"PWordspage");
-    loadmaptoTrie(TPWords, PWordspage);
-    //generateCorrectionPairs(wrong,right,str2.toUtf8().constData(), str1.toUtf8().constData());
-    loadConfusionsFont(wrong,right,ConfPmap);
-    loadConfusionsFont(wrong,right,ConfPmapFont);
-    TopConfusions.clear(); TopConfusionsMask.clear();
-    loadTopConfusions(ConfPmap,TopConfusions,TopConfusionsMask);
+            } else{mapTyping[page_no]++;} // else
+            //cout << mapCorrect[1]<< " " << mapTyping[1]<< " " <<mapSugg1[1]<< " " <<mapSugg2[1]<< " " <<mapSugg3[1]<< " " <<mapSugg4[1]<< " " <<mapSugg5[1]<< " " <<mapSugg6[1]<<endl;
+            //cout << "here" << endl;
+        }// for 1st page ends
+        mapinCorrect[page_no] = vIsz - mapCorrect[page_no];
+        //Loading PWords:-
+        cout << "page_no = "<< page_no << endl;
+        loadMap(localFilenameC,PWords,"PWords");
+        map<string, int> PWordspage;
+        loadMap(localFilenameC,PWordspage,"PWordspage");
+        loadmaptoTrie(TPWords, PWordspage);
+        //generateCorrectionPairs(wrong,right,str2.toUtf8().constData(), str1.toUtf8().constData());
+        loadConfusionsFont(wrong,right,ConfPmap);
+        loadConfusionsFont(wrong,right,ConfPmapFont);
+        TopConfusions.clear(); TopConfusionsMask.clear();
+        loadTopConfusions(ConfPmap,TopConfusions,TopConfusionsMask);
 
 
 
-    //cout << mapCorrect[page_no]<< " " << mapTyping[page_no]<< " " <<mapSugg1[page_no]<< " " <<mapSugg2[page_no]<< " " <<mapSugg3[page_no]<< " " <<mapSugg4[page_no]<< " " <<mapSugg5[page_no]<< " " <<mapSugg6[page_no]<<endl;
-    //cout << vIsz - WER << endl;
-    //ui->lineEdit->setText("Page WER = " + QString::number((vIsz-WER)*100/vIsz));
-    page_no++;
-    filereport = QString::fromStdString(localFilenameC);
+        //cout << mapCorrect[page_no]<< " " << mapTyping[page_no]<< " " <<mapSugg1[page_no]<< " " <<mapSugg2[page_no]<< " " <<mapSugg3[page_no]<< " " <<mapSugg4[page_no]<< " " <<mapSugg5[page_no]<< " " <<mapSugg6[page_no]<<endl;
+        //cout << vIsz - WER << endl;
+        //ui->lineEdit->setText("Page WER = " + QString::number((vIsz-WER)*100/vIsz));
+        page_no++;
+        filereport = QString::fromStdString(localFilenameC);
     } //  while(1) ends
     page_no--;
     filereport.replace(("Corrected/page-"+ QString::number(page_no) + ".txt"), "SuggReport1.txt" );
@@ -1431,184 +1431,184 @@ void MainWindow::on_actionCreateSuggestionLogNearestPriority_triggered()
 {
     map<size_t, size_t> mapCorrect,mapinCorrect,mapTyping,mapSugg1,mapSugg2,mapSugg3,mapSugg4,mapSugg5,mapSugg6,mapSugg7,mapSugg8,mapSugg9,mapSugg10;
 
-       // Load foders in strC and strI
-       QString strI = mFilename;
-       QString strC = strI;
-       strI.replace("Corrected", "Inds"); strC.replace("Inds","Corrected");
+    // Load foders in strC and strI
+    QString strI = mFilename;
+    QString strC = strI;
+    strI.replace("Corrected", "Inds"); strC.replace("Inds","Corrected");
 
-       // load text files one by one
+    // load text files one by one
 
-       //Load page1 of Inds
-       size_t page_no = 1;
-       QString filereport;
+    //Load page1 of Inds
+    size_t page_no = 1;
+    QString filereport;
 
-       while(1) {
+    while(1) {
 
-       string nos = "0123456789";
-       string localFilenameI = strI.toUtf8().constData();
-       size_t loc = localFilenameI.find(".txt");
-       string s = localFilenameI.substr(loc-1,1); // page-123.txt s = 3
-       string no;
-
-
-       while(nos.find(s) != string::npos) { no = s + no; loc--; s = localFilenameI.substr(loc-1,1);  } // if s in nos, s = 2  no = 23, s = 1 no = 123, s = - break
-       //cout << stoi(no) + 1 << endl;
-       localFilenameI.replace(loc,no.size(),to_string(page_no));//to_string(stoi(no) + 1)
-       //cout << localFilename << endl;
-       //QString fileI = QString::fromStdString(localFilenameI);
-
-       //Load page1 of C
-
-       string localFilenameC = strC.toUtf8().constData();
-       loc = localFilenameC.find(".txt");
-       s = localFilenameC.substr(loc-1,1); // page-123.txt s = 3
-       no ="";
-       while(nos.find(s) != string::npos) { no = s + no; loc--; s = localFilenameC.substr(loc-1,1);  } // if s in nos, s = 2  no = 23, s = 1 no = 123, s = - break
-       //cout << stoi(no) + 1 << endl;
-       localFilenameC.replace(loc,no.size(),to_string(page_no));//to_string(stoi(no) + 1)
-       //cout << localFilename << endl;
-      // QString fileC = QString::fromStdString(localFilenameC);
-
-       // NOW localFilenameI and localFilenameC has page1 of both
-       //cout << localFilenameI << " " << localFilenameC << endl;
-       // load fileI in vecpI and
-       vector<string> vecpI, vecpC;
-       std::ifstream sIpage(localFilenameI);
-       if (!(sIpage.is_open())) break; // break the while loop for page_no
-       string localstr;
-       while(sIpage >> localstr) vecpI.push_back(toslp1(localstr)); sIpage.close();
-       std::ifstream sCpage(localFilenameC);
-       while(sCpage >> localstr) vecpC.push_back(toslp1(localstr)); sIpage.close();
-
-       // if 1st word is wrong generate suggestions
-       int vGsz = vecpC.size(), vIsz =  vecpI.size();
-       if (vGsz >vIsz ) mapTyping[page_no] = vGsz - vIsz;
-       //cout << vGsz << " " << vIsz << endl;
-       int win = vGsz  - vIsz;
-       if(win<0) win = -1*win;
-       win = maxIG(win,5);
-       //cout << win << endl;
-       //float WER = 0;
-       // search for a word(pre space, post space as well) in Indsenz within win sized window in GDocs and if found then add to PWords
-       for(int t = 0; t < vIsz;t++){
-           size_t minedit = 1000;
-           string s1 = vecpI[t]; //(vGBook[t1].find(s1) != string::npos) || (vGBook[t1] == s1)
-           string sC;
-           for(int t1 = maxIG(t-win,0); t1 < min(t+win,vGsz); t1++){
-               string sCt1 = vecpC[t1];
-               size_t mineditIC = editDist(s1,sCt1);
-               if(mineditIC < minedit) {minedit = mineditIC; sC = sCt1;   }
-               if (sCt1 == s1) {/*WER++;*/ break;}
-           }
-           // now we have IndsWord in s1 and correct word in sC
-           //cout << s1 << " " << s1.size() << " " << sC << " " << sC.size()<< endl;
-           if((sC == (s1))){
-           mapCorrect[page_no]++; //cout<< " in correct words ke liye if" << endl;
-           }else {
-                   vector<string>  Words1 =  print5NearestEntries(TGBook,s1);
-                   vector<string> Alligned =  print5NearestEntries(TGBookP,s1);
-                   vector<string> PWords1 =  print5NearestEntries(TPWords,s1);
-                   string PairSugg = print2OCRSugg(s1, Alligned[0], ConfPmap,Dict); // map<string,int>&
-                   vector<string>  Words = print1OCRNearestEntries(toslp1(s1),vIBook);
-                   //cout <<" here " << toDev(Words[0]) << endl;
+        string nos = "0123456789";
+        string localFilenameI = strI.toUtf8().constData();
+        size_t loc = localFilenameI.find(".txt");
+        string s = localFilenameI.substr(loc-1,1); // page-123.txt s = 3
+        string no;
 
 
-                   // find nearest confirming to OCR Sugg from Book
-                   string nearestCOnfconfirmingSuggvec;
-                   vector<string> vec = Words1;
-                   int min= 100;
-                       for (size_t t=0;t<vec.size();t++){
-                       vector<string> wordConfusions; vector<int> wCindex;
-                       int minFactor = loadWConfusionsNindex1(s1,vec[t],ConfPmap,wordConfusions,wCindex);
-                       wordConfusions.clear(); wCindex.clear();
-                       if(minFactor < min) {min = minFactor; nearestCOnfconfirmingSuggvec = vec[t];}
-                       }
+        while(nos.find(s) != string::npos) { no = s + no; loc--; s = localFilenameI.substr(loc-1,1);  } // if s in nos, s = 2  no = 23, s = 1 no = 123, s = - break
+        //cout << stoi(no) + 1 << endl;
+        localFilenameI.replace(loc,no.size(),to_string(page_no));//to_string(stoi(no) + 1)
+        //cout << localFilename << endl;
+        //QString fileI = QString::fromStdString(localFilenameI);
 
-                   // find nearest confirming to OCR Sugg from PWords
-                   string nearestCOnfconfirmingSuggvec1;
-                       vector<string> vec1 = PWords1;
-                       min= 100;
-                           for (size_t t=0;t<vec1.size();t++){
-                           vector<string> wordConfusions; vector<int> wCindex;
-                           int minFactor = loadWConfusionsNindex1(s1,vec1[t],ConfPmap,wordConfusions,wCindex);
-                           wordConfusions.clear(); wCindex.clear();
-                           if(minFactor < min) {min = minFactor; nearestCOnfconfirmingSuggvec1 = vec1[t];}
-                           }
+        //Load page1 of C
 
-                   vector<pair<int,string>> vecSugg,vecSugg1;
-                   map<string, int> mapSugg;
-                   string CSugg = CPair[toslp1(s1)];
-                   if(CSugg.size() > 0) mapSugg[toslp1(CSugg)]++;
-                   if(Words.size() > 0)  mapSugg[toslp1(Words[0])]++;
-                   if(Words1.size() > 0) mapSugg[toslp1(nearestCOnfconfirmingSuggvec)]++;
-                   if(PWords1.size() > 0) mapSugg[toslp1(nearestCOnfconfirmingSuggvec1)]++;
-                   if(PairSugg.size() > 0) mapSugg[toslp1(PairSugg)]++;
-                   mapSugg[SamasBreakLRCorrect(toslp1(s1),Dict,PWords,TPWords,TPWordsP)]++;
+        string localFilenameC = strC.toUtf8().constData();
+        loc = localFilenameC.find(".txt");
+        s = localFilenameC.substr(loc-1,1); // page-123.txt s = 3
+        no ="";
+        while(nos.find(s) != string::npos) { no = s + no; loc--; s = localFilenameC.substr(loc-1,1);  } // if s in nos, s = 2  no = 23, s = 1 no = 123, s = - break
+        //cout << stoi(no) + 1 << endl;
+        localFilenameC.replace(loc,no.size(),to_string(page_no));//to_string(stoi(no) + 1)
+        //cout << localFilename << endl;
+        // QString fileC = QString::fromStdString(localFilenameC);
 
-                   map<string, int> mapsugg1;
-                   for(size_t ksugg1 = 0; ksugg1 < 5; ksugg1++) {
-                   if(Words.size() > ksugg1)  mapsugg1[toslp1(Words[ksugg1])]++;
-                   if(Words1.size() > ksugg1) mapsugg1[toslp1(Words1[ksugg1])]++;
-                   if(PWords1.size() > ksugg1) mapsugg1[toslp1(PWords1[ksugg1])]++;
-                   }
+        // NOW localFilenameI and localFilenameC has page1 of both
+        //cout << localFilenameI << " " << localFilenameC << endl;
+        // load fileI in vecpI and
+        vector<string> vecpI, vecpC;
+        std::ifstream sIpage(localFilenameI);
+        if (!(sIpage.is_open())) break; // break the while loop for page_no
+        string localstr;
+        while(sIpage >> localstr) vecpI.push_back(toslp1(localstr)); sIpage.close();
+        std::ifstream sCpage(localFilenameC);
+        while(sCpage >> localstr) vecpC.push_back(toslp1(localstr)); sIpage.close();
+
+        // if 1st word is wrong generate suggestions
+        int vGsz = vecpC.size(), vIsz =  vecpI.size();
+        if (vGsz >vIsz ) mapTyping[page_no] = vGsz - vIsz;
+        //cout << vGsz << " " << vIsz << endl;
+        int win = vGsz  - vIsz;
+        if(win<0) win = -1*win;
+        win = maxIG(win,5);
+        //cout << win << endl;
+        //float WER = 0;
+        // search for a word(pre space, post space as well) in Indsenz within win sized window in GDocs and if found then add to PWords
+        for(int t = 0; t < vIsz;t++){
+            size_t minedit = 1000;
+            string s1 = vecpI[t]; //(vGBook[t1].find(s1) != string::npos) || (vGBook[t1] == s1)
+            string sC;
+            for(int t1 = maxIG(t-win,0); t1 < min(t+win,vGsz); t1++){
+                string sCt1 = vecpC[t1];
+                size_t mineditIC = editDist(s1,sCt1);
+                if(mineditIC < minedit) {minedit = mineditIC; sC = sCt1;   }
+                if (sCt1 == s1) {/*WER++;*/ break;}
+            }
+            // now we have IndsWord in s1 and correct word in sC
+            //cout << s1 << " " << s1.size() << " " << sC << " " << sC.size()<< endl;
+            if((sC == (s1))){
+                mapCorrect[page_no]++; //cout<< " in correct words ke liye if" << endl;
+            }else {
+                vector<string>  Words1 =  print5NearestEntries(TGBook,s1);
+                vector<string> Alligned =  print5NearestEntries(TGBookP,s1);
+                vector<string> PWords1 =  print5NearestEntries(TPWords,s1);
+                string PairSugg = print2OCRSugg(s1, Alligned[0], ConfPmap,Dict); // map<string,int>&
+                vector<string>  Words = print1OCRNearestEntries(toslp1(s1),vIBook);
+                //cout <<" here " << toDev(Words[0]) << endl;
 
 
-                   for( map<string,int>::const_iterator eptr=mapSugg.begin(); eptr!=mapSugg.end(); eptr++){
-                       vecSugg.push_back(make_pair(editDist(toslp1(eptr->first),toslp1(s1)),eptr->first));
-                   }
+                // find nearest confirming to OCR Sugg from Book
+                string nearestCOnfconfirmingSuggvec;
+                vector<string> vec = Words1;
+                int min= 100;
+                for (size_t t=0;t<vec.size();t++){
+                    vector<string> wordConfusions; vector<int> wCindex;
+                    int minFactor = loadWConfusionsNindex1(s1,vec[t],ConfPmap,wordConfusions,wCindex);
+                    wordConfusions.clear(); wCindex.clear();
+                    if(minFactor < min) {min = minFactor; nearestCOnfconfirmingSuggvec = vec[t];}
+                }
 
-                   for( map<string,int>::const_iterator eptr=mapsugg1.begin(); eptr!=mapsugg1.end(); eptr++){
-                       vecSugg1.push_back(make_pair(editDist(toslp1(eptr->first),toslp1(s1)),eptr->first));
-                   }
+                // find nearest confirming to OCR Sugg from PWords
+                string nearestCOnfconfirmingSuggvec1;
+                vector<string> vec1 = PWords1;
+                min= 100;
+                for (size_t t=0;t<vec1.size();t++){
+                    vector<string> wordConfusions; vector<int> wCindex;
+                    int minFactor = loadWConfusionsNindex1(s1,vec1[t],ConfPmap,wordConfusions,wCindex);
+                    wordConfusions.clear(); wCindex.clear();
+                    if(minFactor < min) {min = minFactor; nearestCOnfconfirmingSuggvec1 = vec1[t];}
+                }
+
+                vector<pair<int,string>> vecSugg,vecSugg1;
+                map<string, int> mapSugg;
+                string CSugg = CPair[toslp1(s1)];
+                if(CSugg.size() > 0) mapSugg[toslp1(CSugg)]++;
+                if(Words.size() > 0)  mapSugg[toslp1(Words[0])]++;
+                if(Words1.size() > 0) mapSugg[toslp1(nearestCOnfconfirmingSuggvec)]++;
+                if(PWords1.size() > 0) mapSugg[toslp1(nearestCOnfconfirmingSuggvec1)]++;
+                if(PairSugg.size() > 0) mapSugg[toslp1(PairSugg)]++;
+                mapSugg[SamasBreakLRCorrect(toslp1(s1),Dict,PWords,TPWords,TPWordsP)]++;
+
+                map<string, int> mapsugg1;
+                for(size_t ksugg1 = 0; ksugg1 < 5; ksugg1++) {
+                    if(Words.size() > ksugg1)  mapsugg1[toslp1(Words[ksugg1])]++;
+                    if(Words1.size() > ksugg1) mapsugg1[toslp1(Words1[ksugg1])]++;
+                    if(PWords1.size() > ksugg1) mapsugg1[toslp1(PWords1[ksugg1])]++;
+                }
 
 
-                   //vecSugg.push_back(make_pair(editDist(toslp1(s1),s1),s1));
-                   //if(Words.size() > 0) vecSugg.push_back(make_pair(editDist(toslp1(s1),toslp1(Words[0])),Words[0]));
-                   //vecSugg.push_back(make_pair(editDist(toslp1(s1),toslp1(Words1[0])),Words1[0]));
-                   //vecSugg.push_back(make_pair(editDist(toslp1(s1),toslp1(PairSugg)),PairSugg));
-                   sort(vecSugg.begin(), vecSugg.end()); sort(vecSugg1.begin(), vecSugg1.end());
-                   //cout << vec[0]  << " " << vec[1]  << " " << vec[2]  << " " << newtrie.next.size() << endl;
-                   //Words = suggestions((s1));
-                   vecSugg.insert(vecSugg.end(), vecSugg1.begin(), vecSugg1.end());
+                for( map<string,int>::const_iterator eptr=mapSugg.begin(); eptr!=mapSugg.end(); eptr++){
+                    vecSugg.push_back(make_pair(editDist(toslp1(eptr->first),toslp1(s1)),eptr->first));
+                }
 
-                   if((vecSugg.size() > 0) && (vecSugg[0].second == sC )) mapSugg1[page_no]++;
-                   else if((vecSugg.size() > 1) && (vecSugg[1].second == sC )) mapSugg2[page_no]++;
-                   else if((vecSugg.size() > 2) && (vecSugg[2].second == sC )) mapSugg3[page_no]++;
-                   else if((vecSugg.size() > 3) && (vecSugg[3].second == sC )) mapSugg4[page_no]++;
-                   else if((vecSugg.size() > 4) && (vecSugg[4].second == sC )) mapSugg5[page_no]++;
-                   else if((vecSugg.size() > 5) && (vecSugg[5].second == sC )) mapSugg6[page_no]++;
-                   else mapTyping[page_no]++;
+                for( map<string,int>::const_iterator eptr=mapsugg1.begin(); eptr!=mapsugg1.end(); eptr++){
+                    vecSugg1.push_back(make_pair(editDist(toslp1(eptr->first),toslp1(s1)),eptr->first));
+                }
 
-           }
 
-       //cout << mapCorrect[1]<< " " << mapTyping[1]<< " " <<mapSugg1[1]<< " " <<mapSugg2[1]<< " " <<mapSugg3[1]<< " " <<mapSugg4[1]<< " " <<mapSugg5[1]<< " " <<mapSugg6[1]<<endl;
-       //cout << "here" << endl;
-       }// for 1st page ends
+                //vecSugg.push_back(make_pair(editDist(toslp1(s1),s1),s1));
+                //if(Words.size() > 0) vecSugg.push_back(make_pair(editDist(toslp1(s1),toslp1(Words[0])),Words[0]));
+                //vecSugg.push_back(make_pair(editDist(toslp1(s1),toslp1(Words1[0])),Words1[0]));
+                //vecSugg.push_back(make_pair(editDist(toslp1(s1),toslp1(PairSugg)),PairSugg));
+                sort(vecSugg.begin(), vecSugg.end()); sort(vecSugg1.begin(), vecSugg1.end());
+                //cout << vec[0]  << " " << vec[1]  << " " << vec[2]  << " " << newtrie.next.size() << endl;
+                //Words = suggestions((s1));
+                vecSugg.insert(vecSugg.end(), vecSugg1.begin(), vecSugg1.end());
+
+                if((vecSugg.size() > 0) && (vecSugg[0].second == sC )) mapSugg1[page_no]++;
+                else if((vecSugg.size() > 1) && (vecSugg[1].second == sC )) mapSugg2[page_no]++;
+                else if((vecSugg.size() > 2) && (vecSugg[2].second == sC )) mapSugg3[page_no]++;
+                else if((vecSugg.size() > 3) && (vecSugg[3].second == sC )) mapSugg4[page_no]++;
+                else if((vecSugg.size() > 4) && (vecSugg[4].second == sC )) mapSugg5[page_no]++;
+                else if((vecSugg.size() > 5) && (vecSugg[5].second == sC )) mapSugg6[page_no]++;
+                else mapTyping[page_no]++;
+
+            }
+
+            //cout << mapCorrect[1]<< " " << mapTyping[1]<< " " <<mapSugg1[1]<< " " <<mapSugg2[1]<< " " <<mapSugg3[1]<< " " <<mapSugg4[1]<< " " <<mapSugg5[1]<< " " <<mapSugg6[1]<<endl;
+            //cout << "here" << endl;
+        }// for 1st page ends
         mapinCorrect[page_no] = vGsz - mapCorrect[page_no];
-       loadMap(localFilenameC,PWords,"PWords");
-       map<string, int> PWordspage;
-       loadMap(localFilenameC,PWordspage,"PWordspage");
-       loadmaptoTrie(TPWords, PWordspage);
-       //cout << mapCorrect[page_no]<< " " << mapTyping[page_no]<< " " <<mapSugg1[page_no]<< " " <<mapSugg2[page_no]<< " " <<mapSugg3[page_no]<< " " <<mapSugg4[page_no]<< " " <<mapSugg5[page_no]<< " " <<mapSugg6[page_no]<<endl;
-       //cout << vIsz - WER << endl;
-       //ui->lineEdit->setText("Page WER = " + QString::number((vIsz-WER)*100/vIsz));
-       page_no++;
-       filereport = QString::fromStdString(localFilenameC);
-       } //  while(1) ends
-       page_no--;
-       filereport.replace(("Corrected/page-"+ QString::number(page_no) + ".txt"), "SuggReportNearestPriority.txt" );
-       std::ofstream rep(filereport.toUtf8().constData());
-       rep << "y0 = ["; for( size_t i =1; i <= page_no; i++) rep << mapinCorrect[i] << " "; rep << "];" << endl;
-       rep << "y1 = ["; for( size_t i =1; i <= page_no; i++) rep << mapCorrect[i] << " "; rep << "];" << endl;
-       rep << "y2 = ["; for( size_t i =1; i <= page_no; i++) rep << mapTyping[i]<< " "; rep << "];" << endl;
-       rep << "y3 = ["; for( size_t i =1; i <= page_no; i++) rep << mapSugg1[i]<< " "; rep << "];" << endl;
-       rep << "y4 = ["; for( size_t i =1; i <= page_no; i++) rep << mapSugg2[i]<< " "; rep << "];" << endl;
-       rep << "y5 = ["; for( size_t i =1; i <= page_no; i++) rep << mapSugg3[i]<< " "; rep << "];" << endl;
-       rep << "y6 = ["; for( size_t i =1; i <= page_no; i++) rep << mapSugg4[i]<< " "; rep << "];" << endl;
-       rep << "y7 = ["; for( size_t i =1; i <= page_no; i++) rep << mapSugg5[i]<< " "; rep << "];" << endl;
-       rep << "y8 = ["; for( size_t i =1; i <= page_no; i++) rep << mapSugg6[i]<< " "; rep << "];" << endl;
-       rep << "x = 1:" << page_no << ";" << endl << "plot(x,y0,x,y1,x,y2,x,y3,x,y4,x,y5,x,y6,x,y7,x,y8);"<< endl;
-       rep << "legend(\'IncorrectWords\',\'CorrectWords\', \'#TypingCorrections\', \'#UniqueCorrectSugg1\',\'#UniqueCorrectSugg2\',\'#UniqueCorrectSugg3\',\'#UniqueCorrectSugg4\',\'#UniqueCorrectSugg5\',\'#UniqueCorrectSugg6\' )" << endl;
+        loadMap(localFilenameC,PWords,"PWords");
+        map<string, int> PWordspage;
+        loadMap(localFilenameC,PWordspage,"PWordspage");
+        loadmaptoTrie(TPWords, PWordspage);
+        //cout << mapCorrect[page_no]<< " " << mapTyping[page_no]<< " " <<mapSugg1[page_no]<< " " <<mapSugg2[page_no]<< " " <<mapSugg3[page_no]<< " " <<mapSugg4[page_no]<< " " <<mapSugg5[page_no]<< " " <<mapSugg6[page_no]<<endl;
+        //cout << vIsz - WER << endl;
+        //ui->lineEdit->setText("Page WER = " + QString::number((vIsz-WER)*100/vIsz));
+        page_no++;
+        filereport = QString::fromStdString(localFilenameC);
+    } //  while(1) ends
+    page_no--;
+    filereport.replace(("Corrected/page-"+ QString::number(page_no) + ".txt"), "SuggReportNearestPriority.txt" );
+    std::ofstream rep(filereport.toUtf8().constData());
+    rep << "y0 = ["; for( size_t i =1; i <= page_no; i++) rep << mapinCorrect[i] << " "; rep << "];" << endl;
+    rep << "y1 = ["; for( size_t i =1; i <= page_no; i++) rep << mapCorrect[i] << " "; rep << "];" << endl;
+    rep << "y2 = ["; for( size_t i =1; i <= page_no; i++) rep << mapTyping[i]<< " "; rep << "];" << endl;
+    rep << "y3 = ["; for( size_t i =1; i <= page_no; i++) rep << mapSugg1[i]<< " "; rep << "];" << endl;
+    rep << "y4 = ["; for( size_t i =1; i <= page_no; i++) rep << mapSugg2[i]<< " "; rep << "];" << endl;
+    rep << "y5 = ["; for( size_t i =1; i <= page_no; i++) rep << mapSugg3[i]<< " "; rep << "];" << endl;
+    rep << "y6 = ["; for( size_t i =1; i <= page_no; i++) rep << mapSugg4[i]<< " "; rep << "];" << endl;
+    rep << "y7 = ["; for( size_t i =1; i <= page_no; i++) rep << mapSugg5[i]<< " "; rep << "];" << endl;
+    rep << "y8 = ["; for( size_t i =1; i <= page_no; i++) rep << mapSugg6[i]<< " "; rep << "];" << endl;
+    rep << "x = 1:" << page_no << ";" << endl << "plot(x,y0,x,y1,x,y2,x,y3,x,y4,x,y5,x,y6,x,y7,x,y8);"<< endl;
+    rep << "legend(\'IncorrectWords\',\'CorrectWords\', \'#TypingCorrections\', \'#UniqueCorrectSugg1\',\'#UniqueCorrectSugg2\',\'#UniqueCorrectSugg3\',\'#UniqueCorrectSugg4\',\'#UniqueCorrectSugg5\',\'#UniqueCorrectSugg6\' )" << endl;
 }
 
 void MainWindow::on_actionErrorDetectionRep_triggered()
@@ -1665,7 +1665,7 @@ void MainWindow::on_actionErrorDetectionRep_triggered()
         //cout << stoi(no) + 1 << endl;
         localFilenameC.replace(loc,no.size(),to_string(page_no));//to_string(stoi(no) + 1)
         //cout << localFilename << endl;
-       // QString fileC = QString::fromStdString(localFilenameC);
+        // QString fileC = QString::fromStdString(localFilenameC);
 
         // NOW localFilenameI and localFilenameC has page1 of both
         //cout << localFilenameI << " " << localFilenameC << endl;
@@ -1702,7 +1702,7 @@ void MainWindow::on_actionErrorDetectionRep_triggered()
             //cout << s1 << " " << s1.size() << " " << sC << " " << sC.size()<< endl;
 
             if((sC == (s1))) {mapCorrect[page_no]++;
-            if (searchS1inGVec(s1,iocrdone,gocr,winig)) mapCorrectMarkedCorrect[page_no]++;// else mapCorrectMarkedIncorrect[page_no]++;
+                if (searchS1inGVec(s1,iocrdone,gocr,winig)) mapCorrectMarkedCorrect[page_no]++;// else mapCorrectMarkedIncorrect[page_no]++;
             } else {mapInCorrect[page_no]++;  if (searchS1inGVec(s1,iocrdone,gocr,winig)) mapInCorrectMarkedCorrect[page_no]++; }  //(GBook[s1] >0) ||
             iocrdone ++; //(PWords[s1] >0) searchS1inGVec(s1,iocrdone,gocr,winig) mapCF[s1]>0|| Dict[s1]>0
         }
@@ -1717,16 +1717,16 @@ void MainWindow::on_actionErrorDetectionRep_triggered()
         page_no++;
         filereport = QString::fromStdString(localFilenameC);
     } //  while(1) ends
-        page_no--;
-        filereport.replace(("Corrected/page-"+ QString::number(page_no) + ".txt"), "ErrorDetect.txt" );
-        std::ofstream rep(filereport.toUtf8().constData());
-        rep << "y0A = ["; for( size_t i =1; i <= page_no; i++) rep << mapCorrectMarkedCorrect[i] << " "; rep << "];" << endl;
-        rep << "y1A = ["; for( size_t i =1; i <= page_no; i++) rep << mapInCorrectMarkedCorrect[i] << " "; rep << "];" << endl;
-        rep << "y2A = ["; for( size_t i =1; i <= page_no; i++) rep << mapCorrect[i]<< " "; rep << "];" << endl;
-        rep << "y3A = ["; for( size_t i =1; i <= page_no; i++) rep << mapInCorrect[i]<< " "; rep << "];" << endl;
+    page_no--;
+    filereport.replace(("Corrected/page-"+ QString::number(page_no) + ".txt"), "ErrorDetect.txt" );
+    std::ofstream rep(filereport.toUtf8().constData());
+    rep << "y0A = ["; for( size_t i =1; i <= page_no; i++) rep << mapCorrectMarkedCorrect[i] << " "; rep << "];" << endl;
+    rep << "y1A = ["; for( size_t i =1; i <= page_no; i++) rep << mapInCorrectMarkedCorrect[i] << " "; rep << "];" << endl;
+    rep << "y2A = ["; for( size_t i =1; i <= page_no; i++) rep << mapCorrect[i]<< " "; rep << "];" << endl;
+    rep << "y3A = ["; for( size_t i =1; i <= page_no; i++) rep << mapInCorrect[i]<< " "; rep << "];" << endl;
 
-        rep << "x = 1:" << page_no << ";" << endl << "plot(x,y2A,x,y3A,x,y0A,x,y1A);"<< endl;
-        rep << "legend(\'CorrectA\',\'InCorrectA\',\'CorrectMarkedcorrectA\', \'InCorrectMarkedCorrectA\')" << endl;
+    rep << "x = 1:" << page_no << ";" << endl << "plot(x,y2A,x,y3A,x,y0A,x,y1A);"<< endl;
+    rep << "legend(\'CorrectA\',\'InCorrectA\',\'CorrectMarkedcorrectA\', \'InCorrectMarkedCorrectA\')" << endl;
 
 }
 
@@ -1768,7 +1768,7 @@ void MainWindow::on_actionErrorDetectWithoutAdaptation_triggered()
         //cout << stoi(no) + 1 << endl;
         localFilenameC.replace(loc,no.size(),to_string(page_no));//to_string(stoi(no) + 1)
         //cout << localFilename << endl;
-       // QString fileC = QString::fromStdString(localFilenameC);
+        // QString fileC = QString::fromStdString(localFilenameC);
 
         // NOW localFilenameI and localFilenameC has page1 of both
         //cout << localFilenameI << " " << localFilenameC << endl;
@@ -1804,7 +1804,7 @@ void MainWindow::on_actionErrorDetectWithoutAdaptation_triggered()
             // now we have IndsWord in s1 and correct word in sC
             //cout << s1 << " " << s1.size() << " " << sC << " " << sC.size()<< endl;
             if((sC == (s1))) {mapCorrect[page_no]++;
-            if ((GBook[s1] >0) ||(PWords[s1] >0)) mapCorrectMarkedCorrect[page_no]++; //else mapCorrectMarkedIncorrect[page_no]++;
+                if ((GBook[s1] >0) ||(PWords[s1] >0)) mapCorrectMarkedCorrect[page_no]++; //else mapCorrectMarkedIncorrect[page_no]++;
             } else {mapInCorrect[page_no]++; if ((GBook[s1] >0) ||(PWords[s1] >0)) mapInCorrectMarkedCorrect[page_no]++;}
         }
 
@@ -1818,16 +1818,16 @@ void MainWindow::on_actionErrorDetectWithoutAdaptation_triggered()
         page_no++;
         filereport = QString::fromStdString(localFilenameC);
     } //  while(1) ends
-        page_no--;
-        filereport.replace(("Corrected/page-"+ QString::number(page_no) + ".txt"), "ErrorDetectWOAdapt" );
-        std::ofstream rep(filereport.toUtf8().constData());
-        rep << "y0 = ["; for( size_t i =1; i <= page_no; i++) rep << mapCorrectMarkedCorrect[i] << " "; rep << "];" << endl;
-        rep << "y1 = ["; for( size_t i =1; i <= page_no; i++) rep << mapInCorrectMarkedCorrect[i] << " "; rep << "];" << endl;
-        rep << "y2 = ["; for( size_t i =1; i <= page_no; i++) rep << mapCorrect[i]<< " "; rep << "];" << endl;
-        rep << "y3 = ["; for( size_t i =1; i <= page_no; i++) rep << mapInCorrect[i]<< " "; rep << "];" << endl;
+    page_no--;
+    filereport.replace(("Corrected/page-"+ QString::number(page_no) + ".txt"), "ErrorDetectWOAdapt" );
+    std::ofstream rep(filereport.toUtf8().constData());
+    rep << "y0 = ["; for( size_t i =1; i <= page_no; i++) rep << mapCorrectMarkedCorrect[i] << " "; rep << "];" << endl;
+    rep << "y1 = ["; for( size_t i =1; i <= page_no; i++) rep << mapInCorrectMarkedCorrect[i] << " "; rep << "];" << endl;
+    rep << "y2 = ["; for( size_t i =1; i <= page_no; i++) rep << mapCorrect[i]<< " "; rep << "];" << endl;
+    rep << "y3 = ["; for( size_t i =1; i <= page_no; i++) rep << mapInCorrect[i]<< " "; rep << "];" << endl;
 
-        rep << "x = 1:" << page_no << ";" << endl << "plot(x,y2,x,y3,x,y0,x,y1);"<< endl;
-        rep << "legend(\'Correct\',\'InCorrect\',\'CorrectMarkedcorrect\', \'InCorrectMarkedCorrect\')" << endl;
+    rep << "x = 1:" << page_no << ";" << endl << "plot(x,y2,x,y3,x,y0,x,y1);"<< endl;
+    rep << "legend(\'Correct\',\'InCorrect\',\'CorrectMarkedcorrect\', \'InCorrectMarkedCorrect\')" << endl;
 
 }
 
@@ -1841,54 +1841,54 @@ void MainWindow::on_actionCPair_triggered()
 
     //Load page1 of Inds
     size_t page_no = 1;
-        string localFilenameN = strI.toUtf8().constData();
-        size_t loc1 = localFilenameN.find("Inds");
-        string s1 = localFilenameN.substr(0,loc1);
-        std::ofstream repx(s1+"Report/CPair");
-        //std::ofstream repy(s1+"Report/inputy");
+    string localFilenameN = strI.toUtf8().constData();
+    size_t loc1 = localFilenameN.find("Inds");
+    string s1 = localFilenameN.substr(0,loc1);
+    std::ofstream repx(s1+"Report/CPair");
+    //std::ofstream repy(s1+"Report/inputy");
 
-        while(1) {
-            cout << page_no << endl;
-            //if(page_no == 199) page_no++;
-            string nos = "0123456789";
-            string localFilenameI = strI.toUtf8().constData();
-            size_t loc = localFilenameI.find(".txt");
-            string s = localFilenameI.substr(loc-1,1); // page-123.txt s = 3
-            string no;
+    while(1) {
+        cout << page_no << endl;
+        //if(page_no == 199) page_no++;
+        string nos = "0123456789";
+        string localFilenameI = strI.toUtf8().constData();
+        size_t loc = localFilenameI.find(".txt");
+        string s = localFilenameI.substr(loc-1,1); // page-123.txt s = 3
+        string no;
 
 
-            while(nos.find(s) != string::npos) { no = s + no; loc--; s = localFilenameI.substr(loc-1,1);  } // if s in nos, s = 2  no = 23, s = 1 no = 123, s = - break
-            //cout << stoi(no) + 1 << endl;
-            localFilenameI.replace(loc,no.size(),to_string(page_no));//to_string(stoi(no) + 1)
-            //cout << localFilename << endl;
-            //QString fileI = QString::fromStdString(localFilenameI);
+        while(nos.find(s) != string::npos) { no = s + no; loc--; s = localFilenameI.substr(loc-1,1);  } // if s in nos, s = 2  no = 23, s = 1 no = 123, s = - break
+        //cout << stoi(no) + 1 << endl;
+        localFilenameI.replace(loc,no.size(),to_string(page_no));//to_string(stoi(no) + 1)
+        //cout << localFilename << endl;
+        //QString fileI = QString::fromStdString(localFilenameI);
 
-            //Load page1 of C
+        //Load page1 of C
 
-            string localFilenameC = strC.toUtf8().constData();
-            loc = localFilenameC.find(".txt");
-            s = localFilenameC.substr(loc-1,1); // page-123.txt s = 3
-            no ="";
-            while(nos.find(s) != string::npos) { no = s + no; loc--; s = localFilenameC.substr(loc-1,1);  } // if s in nos, s = 2  no = 23, s = 1 no = 123, s = - break
-            //cout << stoi(no) + 1 << endl;
-            localFilenameC.replace(loc,no.size(),to_string(page_no));//to_string(stoi(no) + 1)
-            //cout << localFilename << endl;
-           // QString fileC = QString::fromStdString(localFilenameC);
+        string localFilenameC = strC.toUtf8().constData();
+        loc = localFilenameC.find(".txt");
+        s = localFilenameC.substr(loc-1,1); // page-123.txt s = 3
+        no ="";
+        while(nos.find(s) != string::npos) { no = s + no; loc--; s = localFilenameC.substr(loc-1,1);  } // if s in nos, s = 2  no = 23, s = 1 no = 123, s = - break
+        //cout << stoi(no) + 1 << endl;
+        localFilenameC.replace(loc,no.size(),to_string(page_no));//to_string(stoi(no) + 1)
+        //cout << localFilename << endl;
+        // QString fileC = QString::fromStdString(localFilenameC);
 
-            // NOW localFilenameI and localFilenameC has page1 of both
-            std::ifstream sIpage(localFilenameI);
-            if (!(sIpage.is_open())) break;
+        // NOW localFilenameI and localFilenameC has page1 of both
+        std::ifstream sIpage(localFilenameI);
+        if (!(sIpage.is_open())) break;
 
-            std::ifstream sCpage(localFilenameI);
-            if (!(sCpage.is_open())) break;
+        std::ifstream sCpage(localFilenameI);
+        if (!(sCpage.is_open())) break;
 
-            vector<string> wrong1,right1;
-            generatePairs(wrong1,right1,localFilenameI, localFilenameC);//.toUtf8().constData()
-            size_t sz = wrong1.size();
-            if(sz < right1.size() ) sz = right1.size();
-            for(size_t t =0; t < sz;t++){
-                if (right1[t] != "") repx << wrong1[t] << "\t" << right1[t] << endl;//
-            }
+        vector<string> wrong1,right1;
+        generatePairs(wrong1,right1,localFilenameI, localFilenameC);//.toUtf8().constData()
+        size_t sz = wrong1.size();
+        if(sz < right1.size() ) sz = right1.size();
+        for(size_t t =0; t < sz;t++){
+            if (right1[t] != "") repx << wrong1[t] << "\t" << right1[t] << endl;//
+        }
 
         page_no++;
     }
@@ -1896,19 +1896,19 @@ void MainWindow::on_actionCPair_triggered()
 
 void MainWindow::on_actionToSlp1_2_triggered()
 {
-        QString file1 = QFileDialog::getOpenFileName(this,"Open a File");
+    QString file1 = QFileDialog::getOpenFileName(this,"Open a File");
 
-        if(!file1.isEmpty())
-        {
-            QFile sFile(file1);
-            if(sFile.open(QFile::ReadOnly | QFile::Text)){
+    if(!file1.isEmpty())
+    {
+        QFile sFile(file1);
+        if(sFile.open(QFile::ReadOnly | QFile::Text)){
             string localFilenameN = file1.toUtf8().constData();
             std::ifstream ip(localFilenameN);
             std::ofstream op(localFilenameN+"slp1");
             string line;
             while(getline(ip,line)) op << toslp1(line) <<endl;
-            }
         }
+    }
 }
 
 
@@ -1920,11 +1920,11 @@ void MainWindow::on_actionToDev_triggered()
     {
         QFile sFile(file1);
         if(sFile.open(QFile::ReadOnly | QFile::Text)){
-        string localFilenameN = file1.toUtf8().constData();
-        std::ifstream ip(localFilenameN);
-        std::ofstream op(localFilenameN+"Dev");
-        string line;
-        while(getline(ip,line)) op << toDev(line) <<endl;
+            string localFilenameN = file1.toUtf8().constData();
+            std::ifstream ip(localFilenameN);
+            std::ofstream op(localFilenameN+"Dev");
+            string line;
+            while(getline(ip,line)) op << toDev(line) <<endl;
         }
     }
 }
@@ -1937,11 +1937,11 @@ void MainWindow::on_actionExtractDev_triggered()
     {
         QFile sFile(file1);
         if(sFile.open(QFile::ReadOnly | QFile::Text)){
-        string localFilenameN = file1.toUtf8().constData();
-        std::ifstream ip(localFilenameN);
-        std::ofstream op(localFilenameN+"Dev");
-        string line;
-        while(ip >> line) { if(hasNoAsci(line)) op << (line) <<endl;}
+            string localFilenameN = file1.toUtf8().constData();
+            std::ifstream ip(localFilenameN);
+            std::ofstream op(localFilenameN+"Dev");
+            string line;
+            while(ip >> line) { if(hasNoAsci(line)) op << (line) <<endl;}
         }
     }
 }
@@ -1976,78 +1976,78 @@ void MainWindow::on_actionPrimarySecOCRPair_triggered()
 void MainWindow::on_actionCPairGEROcrVsCorrect_triggered()
 {
     // Load foders in strC and strI
-       QString strI1 = mFilename;
+    QString strI1 = mFilename;
 
-       //strI.replace("Correct", "Inds"); strC.replace("Inds","Correct");
-       string strInew = strI1.toUtf8().constData();
-       size_t locI = strInew.find("Inds");
-       string strI = strInew.substr(0,locI) + "GEROCR";
-       string strC = strInew.substr(0,locI) + "Correct";
-       // load text files one by one
+    //strI.replace("Correct", "Inds"); strC.replace("Inds","Correct");
+    string strInew = strI1.toUtf8().constData();
+    size_t locI = strInew.find("Inds");
+    string strI = strInew.substr(0,locI) + "GEROCR";
+    string strC = strInew.substr(0,locI) + "Correct";
+    // load text files one by one
 
-       //Load page1 of Inds
-       //size_t page_no = 1;
-           string localFilenameN = strI1.toUtf8().constData();
-           size_t loc1 = localFilenameN.find("Inds");
-           string s1 = localFilenameN.substr(0,loc1);
-           string sRepx = s1+"Reports/inputx";
-           string sRepy = s1+"Reports/inputy";
-           //std::ofstream repx(s1+"Reports/CPairIEROCR_Vs_Correct");
-           //std::ofstream repy(s1+"Report/inputy");
+    //Load page1 of Inds
+    //size_t page_no = 1;
+    string localFilenameN = strI1.toUtf8().constData();
+    size_t loc1 = localFilenameN.find("Inds");
+    string s1 = localFilenameN.substr(0,loc1);
+    string sRepx = s1+"Reports/inputx";
+    string sRepy = s1+"Reports/inputy";
+    //std::ofstream repx(s1+"Reports/CPairIEROCR_Vs_Correct");
+    //std::ofstream repy(s1+"Report/inputy");
 
-               // NOW localFilenameI and localFilenameC has page1 of both
+    // NOW localFilenameI and localFilenameC has page1 of both
 
-               //cout << strI << " " << strC<< endl;
-               //cout <<repx << endl;
-               vector<string> wrong1,right1;
-               generatePairsIEROCR(strI, strC,sRepx,sRepy);//.toUtf8().constData()
-              /* size_t sz = wrong1.size();
+    //cout << strI << " " << strC<< endl;
+    //cout <<repx << endl;
+    vector<string> wrong1,right1;
+    generatePairsIEROCR(strI, strC,sRepx,sRepy);//.toUtf8().constData()
+    /* size_t sz = wrong1.size();
                if(sz < right1.size() ) sz = right1.size();
                for(size_t t =0; t < sz;t++){
                    if ((right1[t] != "") && (right1[t] != "{") && (right1[t] != "}") && (right1[t] != "[") && (right1[t] != "]") )repx << wrong1[t] << "\t" << right1[t] << endl;//
                }*/
 
-          // page_no++;
-       //}
+    // page_no++;
+    //}
 }
 
 
 void MainWindow::on_actionCPairIEROcrVsCorrect_triggered()
 {
     // Load foders in strC and strI
-       QString strI1 = mFilename;
+    QString strI1 = mFilename;
 
-       //strI.replace("Correct", "Inds"); strC.replace("Inds","Correct");
-       string strInew = strI1.toUtf8().constData();
-       size_t locI = strInew.find("Inds");
-       string strI = strInew.substr(0,locI) + "IEROCR";
-       string strC = strInew.substr(0,locI) + "Correct";
-       // load text files one by one
+    //strI.replace("Correct", "Inds"); strC.replace("Inds","Correct");
+    string strInew = strI1.toUtf8().constData();
+    size_t locI = strInew.find("Inds");
+    string strI = strInew.substr(0,locI) + "IEROCR";
+    string strC = strInew.substr(0,locI) + "Correct";
+    // load text files one by one
 
-       //Load page1 of Inds
-       //size_t page_no = 1;
-           string localFilenameN = strI1.toUtf8().constData();
-           size_t loc1 = localFilenameN.find("Inds");
-           string s1 = localFilenameN.substr(0,loc1);
-           string sRepx = s1+"Reports/inputx";
-           string sRepy = s1+"Reports/inputy";
-           //std::ofstream repx(s1+"Reports/CPairIEROCR_Vs_Correct");
-           //std::ofstream repy(s1+"Report/inputy");
+    //Load page1 of Inds
+    //size_t page_no = 1;
+    string localFilenameN = strI1.toUtf8().constData();
+    size_t loc1 = localFilenameN.find("Inds");
+    string s1 = localFilenameN.substr(0,loc1);
+    string sRepx = s1+"Reports/inputx";
+    string sRepy = s1+"Reports/inputy";
+    //std::ofstream repx(s1+"Reports/CPairIEROCR_Vs_Correct");
+    //std::ofstream repy(s1+"Report/inputy");
 
-               // NOW localFilenameI and localFilenameC has page1 of both
+    // NOW localFilenameI and localFilenameC has page1 of both
 
-               //cout << strI << " " << strC<< endl;
-               //cout <<repx << endl;
-               vector<string> wrong1,right1;
-               generatePairsIEROCR(strI, strC,sRepx,sRepy);//.toUtf8().constData()
-              /* size_t sz = wrong1.size();
+    //cout << strI << " " << strC<< endl;
+    //cout <<repx << endl;
+    vector<string> wrong1,right1;
+    generatePairsIEROCR(strI, strC,sRepx,sRepy);//.toUtf8().constData()
+    /* size_t sz = wrong1.size();
                if(sz < right1.size() ) sz = right1.size();
                for(size_t t =0; t < sz;t++){
                    if ((right1[t] != "") && (right1[t] != "{") && (right1[t] != "}") && (right1[t] != "[") && (right1[t] != "]") )repx << wrong1[t] << "\t" << right1[t] << endl;//
                }*/
 
-          // page_no++;
-       //}
+    // page_no++;
+    //}
 }
 
 void MainWindow::on_actionEditDistRep_triggered()
@@ -2058,23 +2058,23 @@ void MainWindow::on_actionEditDistRep_triggered()
     {
         QFile sFile(file1);
         if(sFile.open(QFile::ReadOnly | QFile::Text)){
-        string localFilenameN = file1.toUtf8().constData();
-        std::ifstream ip1(localFilenameN); std::ifstream ip2(localFilenameN+"y");
-        std::ofstream op(localFilenameN+"EditDisRep");
-        string word1,word2;
-        int max = 0;
-        op << "a = [";
-        while(getline(ip1,word1)) {
-            //istringstream l(line);
-            //string word1, word2;
-            //l >> word1; l >> word2;
-            getline(ip2,word2);
-            int ed = editDist(word1,word2);
-            op << ed << " ";
-            if (ed > max ) max = ed;
-        }
-        op << "];" << endl;
-        op << " hist(a,-0.5:0.5:max(a))" << endl << "pause()" << endl;
+            string localFilenameN = file1.toUtf8().constData();
+            std::ifstream ip1(localFilenameN); std::ifstream ip2(localFilenameN+"y");
+            std::ofstream op(localFilenameN+"EditDisRep");
+            string word1,word2;
+            int max = 0;
+            op << "a = [";
+            while(getline(ip1,word1)) {
+                //istringstream l(line);
+                //string word1, word2;
+                //l >> word1; l >> word2;
+                getline(ip2,word2);
+                int ed = editDist(word1,word2);
+                op << ed << " ";
+                if (ed > max ) max = ed;
+            }
+            op << "];" << endl;
+            op << " hist(a,-0.5:0.5:max(a))" << endl << "pause()" << endl;
 
 
         }
@@ -2089,19 +2089,19 @@ void MainWindow::on_actionFilterOutGT50EditDisPairs_triggered()
     {
         QFile sFile(file1);
         if(sFile.open(QFile::ReadOnly | QFile::Text)){
-        string localFilenameN = file1.toUtf8().constData();
-        std::ifstream ip(localFilenameN);
-        std::ofstream op(localFilenameN+"EditDisLE50FilteredRep");
-        string line;
-        while(getline(ip,line)) {
-            stringstream l(line);
-            string word1, word2;
-            getline(l, word1, '\t');
-            getline(l, word2, '\t');
-            //data >> word1 >> word2;
-            int ed = editDist(word1,word2);
-            if (ed <= 50 )  op << word1 << "\t" << word2 << endl;
-        }
+            string localFilenameN = file1.toUtf8().constData();
+            std::ifstream ip(localFilenameN);
+            std::ofstream op(localFilenameN+"EditDisLE50FilteredRep");
+            string line;
+            while(getline(ip,line)) {
+                stringstream l(line);
+                string word1, word2;
+                getline(l, word1, '\t');
+                getline(l, word2, '\t');
+                //data >> word1 >> word2;
+                int ed = editDist(word1,word2);
+                if (ed <= 50 )  op << word1 << "\t" << word2 << endl;
+            }
         }
     }
 }
@@ -2114,21 +2114,21 @@ void MainWindow::on_actionConfusionFreqHist_triggered()
     {
         QFile sFile(file1);
         if(sFile.open(QFile::ReadOnly | QFile::Text)){
-        string localFilenameN = file1.toUtf8().constData();
-        std::ifstream ip(localFilenameN);
-        std::ofstream op(localFilenameN+"HistOCtaveRep");
-        std::ofstream opx(localFilenameN+"HistXaxisRep");
-        string line;
-        op << "a = [";
-        while(getline(ip,line)) {
-           opx << line << "\t" << endl;
-           line = "";
-           getline(ip,line);
-           op << line << " ";
+            string localFilenameN = file1.toUtf8().constData();
+            std::ifstream ip(localFilenameN);
+            std::ofstream op(localFilenameN+"HistOCtaveRep");
+            std::ofstream opx(localFilenameN+"HistXaxisRep");
+            string line;
+            op << "a = [";
+            while(getline(ip,line)) {
+                opx << line << "\t" << endl;
+                line = "";
+                getline(ip,line);
+                op << line << " ";
 
-        }
-        op << "];" << endl;
-        op << " hist(a,-0.5:0.5:max(a))" << endl << "pause()" << endl;
+            }
+            op << "];" << endl;
+            op << " hist(a,-0.5:0.5:max(a))" << endl << "pause()" << endl;
 
 
         }
@@ -2147,76 +2147,76 @@ void MainWindow::on_actionPrepareFeatures_triggered()
     {
         QFile sFile(file1);
         if(sFile.open(QFile::ReadOnly | QFile::Text)){
-        string localFilenameN = file1.toUtf8().constData();
-        QString strI1 = file1;
-        strI1.replace("Dict", "CPair");
-        string strI1s = strI1.toUtf8().constData();
+            string localFilenameN = file1.toUtf8().constData();
+            QString strI1 = file1;
+            strI1.replace("Dict", "CPair");
+            string strI1s = strI1.toUtf8().constData();
 
-        map<string,int> Dictionary;
-        map<string,int> DictionaryNGrams;
-        loadMap(localFilenameN,Dictionary,"Dictionary");
-        size_t count6 = 0;
-        loadDictPatternstoMap(DictionaryNGrams,Dictionary,count6);
+            map<string,int> Dictionary;
+            map<string,int> DictionaryNGrams;
+            loadMap(localFilenameN,Dictionary,"Dictionary");
+            size_t count6 = 0;
+            loadDictPatternstoMap(DictionaryNGrams,Dictionary,count6);
 
-        //get MaxSize of OCR word
-        size_t MaxElSize = 0; string line1;
-        ifstream infile1(strI1s);
-        while (getline(infile1, line1)) {
-            vector<std::string> x = split(line1, "\t");
-                    string a2 = toslp1(x[0]);
-                    if(a2.size() > MaxElSize) MaxElSize = a2.size();
-        }
-        infile1.close();
-        cout<<"MaxElSize "<<MaxElSize<<endl;
-        ifstream infile(strI1s);
-        ofstream outfile;
-        outfile.open(strI1s+"out");
-        string line, a, b;
-        size_t M = (MaxElSize*(MaxElSize-1))/2;
-        while (getline(infile, line)) {
-            vector<std::string> x = split(line, "\t");
-                    a = toslp1(x[0]); b = toslp1(x[1]);
-            if (a == b) outfile << "1 ";
-            else outfile << "-1 ";
-
-            // a is OCR word
-
-            // Feature 1 a Freq in Dict
-            if (Dictionary[a] > 0) outfile << "1:"<< Dictionary[a] << " ";
-            else outfile << "1:0 ";
-
-            //Feature 2 ngrams from a in DictionaryNGrams or not
-            // vector<float> vecfreq;
-            string a1 = a;
-            size_t ia1 = 0;
-            while (ia1 < MaxElSize - a.size()){
-                a1 = a1 + "^";
-                ia1 = ia1 + 1;
+            //get MaxSize of OCR word
+            size_t MaxElSize = 0; string line1;
+            ifstream infile1(strI1s);
+            while (getline(infile1, line1)) {
+                vector<std::string> x = split(line1, "\t");
+                string a2 = toslp1(x[0]);
+                if(a2.size() > MaxElSize) MaxElSize = a2.size();
             }
-            //cout << a1 << endl;
-            vector<bool> vecBin; vector<size_t> vecBinFreq; size_t count = 0;
-            getNgramFeaturesinVect(a1,DictionaryNGrams,vecBin,vecBinFreq,count);
-            //cout << vecBin.size() << endl;
-            size_t vBsz = vecBin.size();
-            for (size_t i=0;i<vBsz;i++){
-                if(vecBin[i]) outfile << i+2 << ":" << 1 <<" ";
-                else outfile << i+2 << ":" << -1 <<" ";
-            }
-            float count6f = count6;
-            //Feature3 vecBinFreq
-            for (size_t i=0;i<vecBinFreq.size();i++){
-                float vbnf = vecBinFreq[i];
-                outfile << i+2+vBsz << ":" << vbnf/count6f <<" ";
-            }
+            infile1.close();
+            cout<<"MaxElSize "<<MaxElSize<<endl;
+            ifstream infile(strI1s);
+            ofstream outfile;
+            outfile.open(strI1s+"out");
+            string line, a, b;
+            size_t M = (MaxElSize*(MaxElSize-1))/2;
+            while (getline(infile, line)) {
+                vector<std::string> x = split(line, "\t");
+                a = toslp1(x[0]); b = toslp1(x[1]);
+                if (a == b) outfile << "1 ";
+                else outfile << "-1 ";
+
+                // a is OCR word
+
+                // Feature 1 a Freq in Dict
+                if (Dictionary[a] > 0) outfile << "1:"<< Dictionary[a] << " ";
+                else outfile << "1:0 ";
+
+                //Feature 2 ngrams from a in DictionaryNGrams or not
+                // vector<float> vecfreq;
+                string a1 = a;
+                size_t ia1 = 0;
+                while (ia1 < MaxElSize - a.size()){
+                    a1 = a1 + "^";
+                    ia1 = ia1 + 1;
+                }
+                //cout << a1 << endl;
+                vector<bool> vecBin; vector<size_t> vecBinFreq; size_t count = 0;
+                getNgramFeaturesinVect(a1,DictionaryNGrams,vecBin,vecBinFreq,count);
+                //cout << vecBin.size() << endl;
+                size_t vBsz = vecBin.size();
+                for (size_t i=0;i<vBsz;i++){
+                    if(vecBin[i]) outfile << i+2 << ":" << 1 <<" ";
+                    else outfile << i+2 << ":" << -1 <<" ";
+                }
+                float count6f = count6;
+                //Feature3 vecBinFreq
+                for (size_t i=0;i<vecBinFreq.size();i++){
+                    float vbnf = vecBinFreq[i];
+                    outfile << i+2+vBsz << ":" << vbnf/count6f <<" ";
+                }
 
 
-            /*for (size_t i=vecBin.size();i<M ;i++){
+                /*for (size_t i=vecBin.size();i<M ;i++){
                 outfile << i+2 << ":" << vecBin[i]<<" ";
             }*/
-            outfile<<endl;
-        } // WHILE CPAIR input
-        outfile.close();
-        infile.close();
+                outfile<<endl;
+            } // WHILE CPAIR input
+            outfile.close();
+            infile.close();
         }
     }
 }
@@ -2238,159 +2238,159 @@ void MainWindow::on_actionErrorDetectionRepUniq_triggered()
 
     while(1) {
 
-    string nos = "0123456789";
-    string localFilenameI = strI.toUtf8().constData();
-    size_t loc = localFilenameI.find(".txt");
-    string s = localFilenameI.substr(loc-1,1); // page-123.txt s = 3
-    string no;
+        string nos = "0123456789";
+        string localFilenameI = strI.toUtf8().constData();
+        size_t loc = localFilenameI.find(".txt");
+        string s = localFilenameI.substr(loc-1,1); // page-123.txt s = 3
+        string no;
 
-    vector<string> wrong, right;
-    while(nos.find(s) != string::npos) { no = s + no; loc--; s = localFilenameI.substr(loc-1,1);  } // if s in nos, s = 2  no = 23, s = 1 no = 123, s = - break
-    //cout << stoi(no) + 1 << endl;
-    localFilenameI.replace(loc,no.size(),to_string(page_no));//to_string(stoi(no) + 1)
-    //cout << localFilename << endl;
-    //QString fileI = QString::fromStdString(localFilenameI);
+        vector<string> wrong, right;
+        while(nos.find(s) != string::npos) { no = s + no; loc--; s = localFilenameI.substr(loc-1,1);  } // if s in nos, s = 2  no = 23, s = 1 no = 123, s = - break
+        //cout << stoi(no) + 1 << endl;
+        localFilenameI.replace(loc,no.size(),to_string(page_no));//to_string(stoi(no) + 1)
+        //cout << localFilename << endl;
+        //QString fileI = QString::fromStdString(localFilenameI);
 
-    //Load page1 of C
+        //Load page1 of C
 
-    string localFilenameC = strC.toUtf8().constData();
-    loc = localFilenameC.find(".txt");
-    s = localFilenameC.substr(loc-1,1); // page-123.txt s = 3
-    no ="";
-    while(nos.find(s) != string::npos) { no = s + no; loc--; s = localFilenameC.substr(loc-1,1);  } // if s in nos, s = 2  no = 23, s = 1 no = 123, s = - break
-    //cout << stoi(no) + 1 << endl;
-    localFilenameC.replace(loc,no.size(),to_string(page_no));//to_string(stoi(no) + 1)
-    //cout << localFilename << endl;
-   // QString fileC = QString::fromStdString(localFilenameC);
+        string localFilenameC = strC.toUtf8().constData();
+        loc = localFilenameC.find(".txt");
+        s = localFilenameC.substr(loc-1,1); // page-123.txt s = 3
+        no ="";
+        while(nos.find(s) != string::npos) { no = s + no; loc--; s = localFilenameC.substr(loc-1,1);  } // if s in nos, s = 2  no = 23, s = 1 no = 123, s = - break
+        //cout << stoi(no) + 1 << endl;
+        localFilenameC.replace(loc,no.size(),to_string(page_no));//to_string(stoi(no) + 1)
+        //cout << localFilename << endl;
+        // QString fileC = QString::fromStdString(localFilenameC);
 
-    // NOW localFilenameI and localFilenameC has page1 of both
-    //cout << localFilenameI << " " << localFilenameC << endl;
-    // load fileI in vecpI and
-    vector<string> vecpI, vecpC;
-    map<string, bool> isAscii;
-    std::ifstream sIpage(localFilenameI);
-    if (!(sIpage.is_open())) break; // break the while loop for page_no
-    string localstr;
-    while(sIpage >> localstr) vecpI.push_back(toslp1(localstr)); sIpage.close();
-    std::ifstream sCpage(localFilenameC);
-    while(sCpage >> localstr) { if(hasM40PerAsci(localstr)){isAscii[toslp1(localstr)] = 1;}  vecpC.push_back(toslp1(localstr));} sIpage.close();
+        // NOW localFilenameI and localFilenameC has page1 of both
+        //cout << localFilenameI << " " << localFilenameC << endl;
+        // load fileI in vecpI and
+        vector<string> vecpI, vecpC;
+        map<string, bool> isAscii;
+        std::ifstream sIpage(localFilenameI);
+        if (!(sIpage.is_open())) break; // break the while loop for page_no
+        string localstr;
+        while(sIpage >> localstr) vecpI.push_back(toslp1(localstr)); sIpage.close();
+        std::ifstream sCpage(localFilenameC);
+        while(sCpage >> localstr) { if(hasM40PerAsci(localstr)){isAscii[toslp1(localstr)] = 1;}  vecpC.push_back(toslp1(localstr));} sIpage.close();
 
-    // if 1st word is wrong generate suggestions
-    int vGsz = vecpC.size(), vIsz =  vecpI.size();
-    if (vGsz >vIsz ) mapTyping[page_no] = vGsz - vIsz;
-    //cout << vGsz << " " << vIsz << endl;
-    int win = vGsz  - vIsz;
-    if(win<0) win = -1*win;
-    win = maxIG(win,5);
-    //cout << win << endl;
-    //float WER = 0;
-    // search for a word(pre space, post space as well) in Indsenz within win sized window in GDocs and if found then add to PWords
-    for(int t = 0; t < vIsz;t++){
-        size_t minedit = 1000;
-        string s1 = vecpI[t]; //(vGBook[t1].find(s1) != string::npos) || (vGBook[t1] == s1)
-        string sC;
-        for(int t1 = maxIG(t-win,0); t1 < min(t+win,vGsz); t1++){
-            string sCt1 = vecpC[t1];
-            size_t mineditIC = editDist(s1,sCt1);
-            if(mineditIC < minedit) {minedit = mineditIC; sC = sCt1;   }
-            if (sCt1 == s1) {/*WER++;*/ break;}
-        }
+        // if 1st word is wrong generate suggestions
+        int vGsz = vecpC.size(), vIsz =  vecpI.size();
+        if (vGsz >vIsz ) mapTyping[page_no] = vGsz - vIsz;
+        //cout << vGsz << " " << vIsz << endl;
+        int win = vGsz  - vIsz;
+        if(win<0) win = -1*win;
+        win = maxIG(win,5);
+        //cout << win << endl;
+        //float WER = 0;
+        // search for a word(pre space, post space as well) in Indsenz within win sized window in GDocs and if found then add to PWords
+        for(int t = 0; t < vIsz;t++){
+            size_t minedit = 1000;
+            string s1 = vecpI[t]; //(vGBook[t1].find(s1) != string::npos) || (vGBook[t1] == s1)
+            string sC;
+            for(int t1 = maxIG(t-win,0); t1 < min(t+win,vGsz); t1++){
+                string sCt1 = vecpC[t1];
+                size_t mineditIC = editDist(s1,sCt1);
+                if(mineditIC < minedit) {minedit = mineditIC; sC = sCt1;   }
+                if (sCt1 == s1) {/*WER++;*/ break;}
+            }
 
-        // now we have IndsWord in s1 and correct word in sC
-        //cout << s1 << " " << s1.size() << " " << sC << " " << sC.size()<< endl;
-        if((sC == (s1))){
-        mapCorrect[page_no]++; //cout<< " in correct words ke liye if" << endl;
-        }else if(!isAscii[sC]) { wrong.push_back(s1); right.push_back(sC);
-            //cout<< " inside incorrect words ke liye else" << endl;
-            vector<string>  Words1 =  print5NearestEntries(TGBook,s1); //2
-            if(Words1.size() == 0) Words1.push_back("");
-            string nearestCOnfconfirmingSuggvec; //1
-            vector<string> vec = Words1;
-            int min= 100;
+            // now we have IndsWord in s1 and correct word in sC
+            //cout << s1 << " " << s1.size() << " " << sC << " " << sC.size()<< endl;
+            if((sC == (s1))){
+                mapCorrect[page_no]++; //cout<< " in correct words ke liye if" << endl;
+            }else if(!isAscii[sC]) { wrong.push_back(s1); right.push_back(sC);
+                //cout<< " inside incorrect words ke liye else" << endl;
+                vector<string>  Words1 =  print5NearestEntries(TGBook,s1); //2
+                if(Words1.size() == 0) Words1.push_back("");
+                string nearestCOnfconfirmingSuggvec; //1
+                vector<string> vec = Words1;
+                int min= 100;
                 for (size_t t=0;t<vec.size();t++){
-                vector<string> wordConfusions; vector<int> wCindex;
-                int minFactor = loadWConfusionsNindex1(s1,vec[t],ConfPmap,wordConfusions,wCindex);
-                wordConfusions.clear(); wCindex.clear();
-                if(minFactor < min) {min = minFactor; nearestCOnfconfirmingSuggvec = vec[t];}
+                    vector<string> wordConfusions; vector<int> wCindex;
+                    int minFactor = loadWConfusionsNindex1(s1,vec[t],ConfPmap,wordConfusions,wCindex);
+                    wordConfusions.clear(); wCindex.clear();
+                    if(minFactor < min) {min = minFactor; nearestCOnfconfirmingSuggvec = vec[t];}
                 }
-            //cout << "sz" << Words1.size() << " "<< Words1[0]<< endl;
-            if(nearestCOnfconfirmingSuggvec == (sC)){mapSugg1[page_no]++; }
-            else if((Words1[0] == (sC))){mapSugg2[page_no]++; }
-            else {
+                //cout << "sz" << Words1.size() << " "<< Words1[0]<< endl;
+                if(nearestCOnfconfirmingSuggvec == (sC)){mapSugg1[page_no]++; }
+                else if((Words1[0] == (sC))){mapSugg2[page_no]++; }
+                else {
 
-                vector<string> Alligned =  print5NearestEntries(TGBookP,s1); //6
-                if(Alligned.size() == 0) Alligned.push_back("");
+                    vector<string> Alligned =  print5NearestEntries(TGBookP,s1); //6
+                    if(Alligned.size() == 0) Alligned.push_back("");
 
-                string PairSugg = "";
-                if(Alligned.size() > 0) PairSugg = print2OCRSugg(s1, Alligned[0], ConfPmap,Dict);//3
-                //cout << sC << "PairSugg " << PairSugg<<endl;
-                if(PairSugg == sC) {  mapSugg3[page_no]++;}
-                else{ vector<string>  Words = print1OCRNearestEntries(toslp1(s1),vIBook); // 4 primary doc based
-                    if(Words.size() == 0) Words.push_back("");
-                    if(Words[0] == (sC)) { mapSugg4[page_no]++;  }
-                    else { string samassugg = SamasBreakLRCorrect(toslp1(s1),Dict,PWords,TPWords,TPWordsP); // 5
-                        if(samassugg == sC) { mapSugg5[page_no]++; }
-                         else {
-                            vector<string> PWords1 =  print5NearestEntries(TPWords,s1); // 6
-                            if(PWords1.size() == 0) PWords1.push_back("");
-                            if(PWords1[0] == (sC)) { mapSugg6[page_no]++; }
-                             else {string nearestCOnfconfirmingSuggvecFont;
-                                int min= 100;
+                    string PairSugg = "";
+                    if(Alligned.size() > 0) PairSugg = print2OCRSugg(s1, Alligned[0], ConfPmap,Dict);//3
+                    //cout << sC << "PairSugg " << PairSugg<<endl;
+                    if(PairSugg == sC) {  mapSugg3[page_no]++;}
+                    else{ vector<string>  Words = print1OCRNearestEntries(toslp1(s1),vIBook); // 4 primary doc based
+                        if(Words.size() == 0) Words.push_back("");
+                        if(Words[0] == (sC)) { mapSugg4[page_no]++;  }
+                        else { string samassugg = SamasBreakLRCorrect(toslp1(s1),Dict,PWords,TPWords,TPWordsP); // 5
+                            if(samassugg == sC) { mapSugg5[page_no]++; }
+                            else {
+                                vector<string> PWords1 =  print5NearestEntries(TPWords,s1); // 6
+                                if(PWords1.size() == 0) PWords1.push_back("");
+                                if(PWords1[0] == (sC)) { mapSugg6[page_no]++; }
+                                else {string nearestCOnfconfirmingSuggvecFont;
+                                    int min= 100;
                                     for (size_t t=0;t<vec.size();t++){
-                                    vector<string> wordConfusions; vector<int> wCindex;
-                                    int minFactor = loadWConfusionsNindex1(s1,vec[t],ConfPmapFont,wordConfusions,wCindex);
-                                    wordConfusions.clear(); wCindex.clear();
-                                    if(minFactor < min) {min = minFactor; nearestCOnfconfirmingSuggvecFont = vec[t];}
+                                        vector<string> wordConfusions; vector<int> wCindex;
+                                        int minFactor = loadWConfusionsNindex1(s1,vec[t],ConfPmapFont,wordConfusions,wCindex);
+                                        wordConfusions.clear(); wCindex.clear();
+                                        if(minFactor < min) {min = minFactor; nearestCOnfconfirmingSuggvecFont = vec[t];}
                                     }
-                                if(nearestCOnfconfirmingSuggvecFont == sC) {mapSugg7[page_no]++;}
-                                else{
-                                    /*string PairSuggFont = "";
+                                    if(nearestCOnfconfirmingSuggvecFont == sC) {mapSugg7[page_no]++;}
+                                    else{
+                                        /*string PairSuggFont = "";
                                     if(Alligned.size() > 0) PairSuggFont = print2OCRSugg(s1, Alligned[0], ConfPmap,Dict);//3
                                     //cout << sC << "PairSugg " << PairSugg<<endl;
                                     if(PairSuggFont == sC) {  mapSugg8[page_no]++;}*/
-                                    vector<string> Wordsdict;  {Wordsdict =  print5NearestEntries(TDict,s1);}
-                                    if((Wordsdict.size()>0)&&(Wordsdict[0] == sC)) {  mapSugg8[page_no]++; }
-                                    else{
-                                        string sugg9 = generatePossibilitesNsuggest(s1,TopConfusions,TopConfusionsMask,Dict,SRules);
-                                        if(sugg9 == sC) {  mapSugg9[page_no]++;
-                                        //cout << s1 << " "<<sC << endl;
+                                        vector<string> Wordsdict;  {Wordsdict =  print5NearestEntries(TDict,s1);}
+                                        if((Wordsdict.size()>0)&&(Wordsdict[0] == sC)) {  mapSugg8[page_no]++; }
+                                        else{
+                                            string sugg9 = generatePossibilitesNsuggest(s1,TopConfusions,TopConfusionsMask,Dict,SRules);
+                                            if(sugg9 == sC) {  mapSugg9[page_no]++;
+                                                //cout << s1 << " "<<sC << endl;
+                                            }
+                                            else{ if(LSTM[s1] == sC) {mapSugg10[page_no]++;
+                                                    cout << s1 << " lstm " << sC <<endl;}
+                                                else mapTyping[page_no]++;}
                                         }
-                                        else{ if(LSTM[s1] == sC) {mapSugg10[page_no]++;
-                                            cout << s1 << " lstm " << sC <<endl;}
-                                            else mapTyping[page_no]++;}
                                     }
                                 }
                             }
                         }
                     }
+
                 }
 
-            }
-
-        } else{mapTyping[page_no]++;} // else
-    //cout << mapCorrect[1]<< " " << mapTyping[1]<< " " <<mapSugg1[1]<< " " <<mapSugg2[1]<< " " <<mapSugg3[1]<< " " <<mapSugg4[1]<< " " <<mapSugg5[1]<< " " <<mapSugg6[1]<<endl;
-    //cout << "here" << endl;
-    }// for 1st page ends
-    mapinCorrect[page_no] = vIsz - mapCorrect[page_no];
-    //Loading PWords:-
-    cout << "page_no = "<< page_no << endl;
-    loadMap(localFilenameC,PWords,"PWords");
-    map<string, int> PWordspage;
-    loadMap(localFilenameC,PWordspage,"PWordspage");
-    loadmaptoTrie(TPWords, PWordspage);
-    //generateCorrectionPairs(wrong,right,str2.toUtf8().constData(), str1.toUtf8().constData());
-    loadConfusionsFont(wrong,right,ConfPmap);
-    loadConfusionsFont(wrong,right,ConfPmapFont);
-    TopConfusions.clear(); TopConfusionsMask.clear();
-    loadTopConfusions(ConfPmap,TopConfusions,TopConfusionsMask);
+            } else{mapTyping[page_no]++;} // else
+            //cout << mapCorrect[1]<< " " << mapTyping[1]<< " " <<mapSugg1[1]<< " " <<mapSugg2[1]<< " " <<mapSugg3[1]<< " " <<mapSugg4[1]<< " " <<mapSugg5[1]<< " " <<mapSugg6[1]<<endl;
+            //cout << "here" << endl;
+        }// for 1st page ends
+        mapinCorrect[page_no] = vIsz - mapCorrect[page_no];
+        //Loading PWords:-
+        cout << "page_no = "<< page_no << endl;
+        loadMap(localFilenameC,PWords,"PWords");
+        map<string, int> PWordspage;
+        loadMap(localFilenameC,PWordspage,"PWordspage");
+        loadmaptoTrie(TPWords, PWordspage);
+        //generateCorrectionPairs(wrong,right,str2.toUtf8().constData(), str1.toUtf8().constData());
+        loadConfusionsFont(wrong,right,ConfPmap);
+        loadConfusionsFont(wrong,right,ConfPmapFont);
+        TopConfusions.clear(); TopConfusionsMask.clear();
+        loadTopConfusions(ConfPmap,TopConfusions,TopConfusionsMask);
 
 
 
-    //cout << mapCorrect[page_no]<< " " << mapTyping[page_no]<< " " <<mapSugg1[page_no]<< " " <<mapSugg2[page_no]<< " " <<mapSugg3[page_no]<< " " <<mapSugg4[page_no]<< " " <<mapSugg5[page_no]<< " " <<mapSugg6[page_no]<<endl;
-    //cout << vIsz - WER << endl;
-    //ui->lineEdit->setText("Page WER = " + QString::number((vIsz-WER)*100/vIsz));
-    page_no++;
-    filereport = QString::fromStdString(localFilenameC);
+        //cout << mapCorrect[page_no]<< " " << mapTyping[page_no]<< " " <<mapSugg1[page_no]<< " " <<mapSugg2[page_no]<< " " <<mapSugg3[page_no]<< " " <<mapSugg4[page_no]<< " " <<mapSugg5[page_no]<< " " <<mapSugg6[page_no]<<endl;
+        //cout << vIsz - WER << endl;
+        //ui->lineEdit->setText("Page WER = " + QString::number((vIsz-WER)*100/vIsz));
+        page_no++;
+        filereport = QString::fromStdString(localFilenameC);
     } //  while(1) ends
     page_no--;
     filereport.replace(("Corrected/page-"+ QString::number(page_no) + ".txt"), "SuggReportUniq1.txt" );
@@ -2429,3 +2429,87 @@ void MainWindow::on_actionEnglish_triggered()
 {
     HinFlag = 0 , SanFlag = 0;
 }
+
+void MainWindow::on_actionBold_triggered()
+{
+    if (ui->textBrowser->textCursor().hasSelection())
+    {
+        if(ui->textBrowser->textCursor().charFormat().font().weight() == QFont::Bold)
+        {
+            QTextCharFormat format{ui->textBrowser->textCursor().charFormat()};
+            format.setFontWeight(QFont::Normal);
+            ui->textBrowser->textCursor().setCharFormat(format);
+        }
+        else
+        {
+            QTextCharFormat format{ui->textBrowser->textCursor().charFormat()};
+            format.setFontWeight(QFont::Bold);
+            ui->textBrowser->textCursor().setCharFormat(format);
+        }
+    }
+}
+
+
+void MainWindow::on_actionsubscript_triggered(bool checked)
+{
+    if(checked)
+    {
+        QTextCharFormat format{ui->textBrowser->textCursor().charFormat()};
+        format.setVerticalAlignment(QTextCharFormat::VerticalAlignment::AlignSubScript);
+        ui->textBrowser->textCursor().setCharFormat(format);
+    }else
+    {
+        QTextCharFormat format{ui->textBrowser->textCursor().charFormat()};
+        format.setVerticalAlignment(QTextCharFormat::VerticalAlignment::AlignNormal);
+        ui->textBrowser->textCursor().setCharFormat(format);
+    }
+}
+
+
+void MainWindow::on_actionsuperscript_triggered(bool checked)
+{
+    if(checked)
+    {
+        QTextCharFormat format{ui->textBrowser->textCursor().charFormat()};
+        format.setVerticalAlignment(QTextCharFormat::VerticalAlignment::AlignSuperScript);
+        ui->textBrowser->textCursor().setCharFormat(format);
+    }else
+    {
+        QTextCharFormat format{ui->textBrowser->textCursor().charFormat()};
+        format.setVerticalAlignment(QTextCharFormat::VerticalAlignment::AlignNormal);
+        ui->textBrowser->textCursor().setCharFormat(format);
+    }
+}
+
+
+void MainWindow::on_textBrowser_selectionChanged()
+{
+    if(ui->textBrowser->textCursor().hasSelection())
+    {
+        if(ui->textBrowser->textCursor().charFormat().verticalAlignment() ==
+                QTextCharFormat::VerticalAlignment::AlignSubScript)
+            ui->actionsubscript->setChecked(true);
+        else
+            ui->actionsubscript->setChecked(false);
+
+
+        if(ui->textBrowser->textCursor().charFormat().verticalAlignment() ==
+                QTextCharFormat::VerticalAlignment::AlignSuperScript)
+            ui->actionsuperscript->setChecked(true);
+        else
+            ui->actionsuperscript->setChecked(false);
+
+
+        if(ui->textBrowser->textCursor().charFormat().font().weight() == QFont::Bold)
+            ui->actionBold->setChecked(true);
+        else
+            ui->actionBold->setChecked(false);
+    }
+    else
+    {
+        ui->actionBold->setChecked(false);
+        ui->actionsubscript->setChecked(false);
+        ui->actionsuperscript->setChecked(false);
+    }
+}
+

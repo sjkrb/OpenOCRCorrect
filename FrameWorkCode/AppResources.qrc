@@ -9,5 +9,8 @@
         <file>New.png</file>
         <file>cut.png</file>
         <file>copy.png</file>
+        <file>bold.png</file>
+        <file>superscript.png</file>
+        <file>subscript.png</file>
     </qresource>
 </RCC>
